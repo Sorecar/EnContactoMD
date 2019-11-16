@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.FXMLMenuPrincipalController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6585a3b2" height="400.0" stroke="TRANSPARENT" strokeType="INSIDE" width="600.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6585a4" height="100.0" stroke="TRANSPARENT" strokeType="INSIDE" width="600.0" />
+      <Text fill="WHITE" layoutX="172.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EN CONTACTO">
+         <font>
+            <Font name="Yu Gothic Regular" size="36.0" />
+         </font>
+      </Text>
+      <Text fx:id="user" layoutX="289.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="80.0" fitWidth="76.0" layoutX="39.0" layoutY="12.0" onMouseClicked="#mamada" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/EC.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="100.0" fitWidth="101.0" layoutX="59.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/Perfil.png" />
+         </image>
+      </ImageView>
+      <Hyperlink layoutX="33.0" layoutY="263.0" onMouseClicked="#EditarPerfil" text="EDITAR PERFIL" textFill="WHITE">
+         <font>
+            <Font name="Yu Gothic Bold" size="18.0" />
+         </font>
+      </Hyperlink>
+      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="250.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/Noticias.png" />
+         </image>
+      </ImageView>
+      <Hyperlink layoutX="250.0" layoutY="263.0" onMouseClicked="#Noticias" text="NOTICIAS" textFill="WHITE">
+         <font>
+            <Font name="Yu Gothic Bold" size="18.0" />
+         </font>
+      </Hyperlink>
+      <ImageView fitHeight="100.0" fitWidth="101.0" layoutX="429.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/Eventos.png" />
+         </image>
+      </ImageView>
+      <Hyperlink layoutX="429.0" layoutY="263.0" onMouseClicked="#Eventos" text="EVENTOS" textFill="WHITE">
+         <font>
+            <Font name="Yu Gothic Bold" size="18.0" />
+         </font>
+      </Hyperlink>
+      <Hyperlink layoutX="39.0" layoutY="349.0" onMouseClicked="#CerrarSesion" text="CERRAR SESION" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Hyperlink>
+   </children>
+</AnchorPane>

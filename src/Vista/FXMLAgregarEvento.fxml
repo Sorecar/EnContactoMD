@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.FXMLAgregarEventoController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6585a4" height="100.0" stroke="TRANSPARENT" strokeType="INSIDE" width="600.0" />
+      <Text fill="WHITE" layoutX="138.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AGREGAR EVENTO">
+         <font>
+            <Font name="Yu Gothic Regular" size="36.0" />
+         </font>
+      </Text>
+      <Button layoutX="226.0" layoutY="353.0" mnemonicParsing="false" onAction="#Guardar" prefHeight="25.0" prefWidth="75.0" text="GUARDAR" />
+      <Button layoutX="488.0" layoutY="353.0" mnemonicParsing="false" onAction="#Cancelar" text="CANCELAR" />
+      <Text layoutX="27.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DESCRIPCION:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="EventoDes" layoutX="222.0" layoutY="271.0" prefHeight="66.0" prefWidth="341.0" promptText="Max 300 caracteres" />
+      <Text layoutX="27.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FECHA DEL EVENTO:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="FechaE" layoutX="220.0" layoutY="188.0" prefHeight="25.0" prefWidth="163.0" promptText="Ejemplo 04/11/2019" />
+      <Text layoutX="27.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONTACTO PARA MAS INFORMES:" wrappingWidth="202.248046875">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="ConEvento" layoutX="220.0" layoutY="119.0" prefHeight="48.0" prefWidth="341.0" promptText="Ejemplo Num Cel, Tel, Instagram, Facebook" />
+      <Text layoutX="27.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HORA DEL EVENTO:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="HoraE" layoutX="220.0" layoutY="229.0" promptText="Ejemplo 08:30 p.m." />
+   </children>
+</AnchorPane>

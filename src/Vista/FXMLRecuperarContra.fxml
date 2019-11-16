@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.FXMLRecuperarContraController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6585a4" height="100.0" stroke="TRANSPARENT" strokeType="INSIDE" width="600.0" />
+      <Label layoutX="114.0" layoutY="29.0" text="Recuperar Contraseña" textFill="WHITE">
+         <font>
+            <Font name="Yu Gothic Regular" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="166.0" layoutY="117.0" text="¿Cúal es tu nombre de usuario?">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="TfUsuario" layoutX="197.0" layoutY="160.0" onAction="#BtEnviarContra" prefHeight="25.0" prefWidth="189.0" />
+      <Label layoutX="153.0" layoutY="200.0" text="¿Cúal es el nombre de tu mascota?">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="TfMascota" layoutX="197.0" layoutY="235.0" onAction="#BtEnviarContra" prefHeight="25.0" prefWidth="189.0" />
+      <Label layoutX="162.0" layoutY="270.0" text="¿Cúal es tu número de telefono?">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="TfTelefono" layoutX="197.0" layoutY="308.0" onAction="#BtEnviarContra" prefHeight="25.0" prefWidth="189.0" />
+      <Button layoutX="153.0" layoutY="356.0" mnemonicParsing="false" onAction="#BtEnviarContra" text="Ver Contraseña" />
+      <Button layoutX="368.0" layoutY="356.0" mnemonicParsing="false" onAction="#Cancelar" text="Cancelar" />
+   </children>
+</AnchorPane>
