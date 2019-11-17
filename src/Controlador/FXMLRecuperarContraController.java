@@ -51,7 +51,7 @@ public class FXMLRecuperarContraController implements Initializable {
     }
 
     private boolean validar(String usuario, String telefono, String mascota) {
-        String sql = "SELECT Contraseña FROM usuarios WHERE Usuario='" + usuario + "' && NumTelefono='" + telefono + "' && NomMascota='" + mascota + "'";
+        String sql = "SELECT Contraseña FROM usuarios WHERE Usuario='" + usuario + "' && Telefono='" + telefono + "' && Mascota='" + mascota + "'";
         try {
             ps = con.createStatement();
             rs = ps.executeQuery(sql);
