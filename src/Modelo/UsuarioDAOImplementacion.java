@@ -10,14 +10,14 @@ public class UsuarioDAOImplementacion implements UsuarioDAO {
 
     BaseConexion base = new BaseConexion();
     Connection conexion = base.getConexion();
-    Statement stm;
+    PreparedStatement ps;
 
     @Override
     public boolean create(Usuario usuario) throws Exception {
         boolean bandera = false;
         String INSERT = "INSERT INTO usuarios (id, usuario, contraseña, Telefono, Mascota, Estatus) VALUES (NULL, ?, ?, ?, ?, 'Activo')";
         try {
-            PreparedStatement ps = conexion.prepareStatement(INSERT);
+            ps = conexion.prepareStatement(INSERT);
             
             ps.setString(1, usuario.getUsuario());
             ps.setString(2, usuario.getContraseña());

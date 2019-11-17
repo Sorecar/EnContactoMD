@@ -1,25 +1,30 @@
 package Modelo;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 import java.util.List;
 
 public class NoticiaDAOImplementacion implements NoticiaDAO{
     
     BaseConexion base = new BaseConexion();
     Connection conexion = base.getConexion();
-    Statement stm;
-
+    PreparedStatement ps;
+    
     @Override
     public boolean create(Noticia noticia) throws Exception {
         boolean bandera=false;
+        Date fecha = new Date();
+        String INSERT = "INSERT INTO noticia (idNoticia, usuario, Noticia, Fecha) VALUES (NULL, ?, ?, NOW())";
         try{
-            stm = conexion.createStatement();
-            String query = "INSERT INTO noticias(Usuario,Noticia,HoraNoticia,FechaNoticia)"
-                    + " VALUES('"+noticia.getUsuario()+"', '"+noticia.getNoticia()+"', '"+noticia.getHoraNoticia()+"', '"+noticia.getFechaNoticia()+"')";
-            stm.execute(query);
-            bandera=true;
+            ps = conexion.prepareStatement(INSERT);
+            ps.setString(1, noticia.getUsuario());
+            ps.setString(2, noticia.getNoticia());
+            
+            ps.executeUpdate();
+            ps.close();
         }catch(SQLException ex) {
             System.out.println(ex);
             bandera=false;

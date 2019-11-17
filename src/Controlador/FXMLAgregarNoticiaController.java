@@ -39,12 +39,6 @@ public class FXMLAgregarNoticiaController implements Initializable {
     ResultSet rs = null;
     
     @FXML
-    private TextField HoraN;
-    @FXML
-    private TextField FechaN;
-    @FXML
-    private TextField UsuarioN;
-    @FXML
     private TextArea NoticiaD;
 
     /**
@@ -57,12 +51,10 @@ public class FXMLAgregarNoticiaController implements Initializable {
 
     @FXML
     private void Guardar(ActionEvent event) {
-        String Usuario = UsuarioN.getText();
-        String Noticia = NoticiaD.getText();
-        String HoraNoticia = HoraN.getText();
-        String FechaNoticia = FechaN.getText();
-        if (!UsuarioN.getText().isEmpty() || !NoticiaD.getText().isEmpty() || !HoraN.getText().isEmpty() || !FechaN.getText().isEmpty()) {
-            Noticia noticia = new Noticia(Usuario, Noticia, HoraNoticia, FechaNoticia);
+        try{
+        if (!NoticiaD.getText().isEmpty()) {
+            recuperarUsuario();
+            Noticia noticia = new Noticia(rs.getString("Usuario"), NoticiaD.getText());
             NoticiaDAOImplementacion noticiaDAO = new NoticiaDAOImplementacion();
             try {
                 noticiaDAO.create(noticia);
@@ -77,6 +69,9 @@ public class FXMLAgregarNoticiaController implements Initializable {
             }
         } else {
             System.out.println("Algun campo esta vacio");
+        }
+        }catch(SQLException e){
+            System.out.println(e);
         }
     }
 
@@ -101,14 +96,14 @@ public class FXMLAgregarNoticiaController implements Initializable {
         stage.setScene(new Scene(root1));
         stage.show();
     }
-    @FXML
-    public void llenarText() {
+    
+    public void recuperarUsuario() {
         try {
             String sql = "SELECT * FROM usuarios WHERE Id=" + this.Id;
             ps = con.createStatement();
             rs = ps.executeQuery(sql);
-            if (rs.next()) {
-                
+            if(rs.next()){
+                System.out.println("Agregar Noticia usuario:"+ rs.getString("Usuario"));
             }
         } catch (SQLException e) {
             System.out.println(e);

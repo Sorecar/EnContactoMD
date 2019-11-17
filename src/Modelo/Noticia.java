@@ -1,49 +1,47 @@
 package Modelo;
 
 public class Noticia {
-    
+
+    private int Id;
     private String Usuario;
     private String Noticia;
-    private String HoraNoticia;
-    private String FechaNoticia;
+    private String Fecha;
 
-    public Noticia(String Usuario, String Noticia, String HoraNoticia, String FechaNoticia) {
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
+    }
+
+    public Noticia(String Usuario, String Noticia) {
         this.Usuario = Usuario;
         this.Noticia = Noticia;
-        this.HoraNoticia = HoraNoticia;
-        this.FechaNoticia = FechaNoticia;
     }
 
     public String getUsuario() {
         return Usuario;
     }
 
-    public void setUsuario(String Usuario) {
-        this.Usuario = Usuario;
+    public void setUsuario(String usuario) {
+        this.Usuario = usuario;
     }
 
     public String getNoticia() {
         return Noticia;
     }
 
-    public void setNoticia(String Noticia) {
-        this.Noticia = Noticia;
+    public void setNoticia(String noticia) {
+        this.Noticia = noticia;
     }
 
-    public String getHoraNoticia() {
-        return HoraNoticia;
+    public String getFecha() {
+        return Fecha;
     }
 
-    public void setHoraNoticia(String HoraNoticia) {
-        this.HoraNoticia = HoraNoticia;
+    public void setFecha(String fecha) {
+        this.Fecha = fecha;
     }
 
-    public String getFechaNoticia() {
-        return FechaNoticia;
-    }
-
-    public void setFechaNoticia(String FechaNoticia) {
-        this.FechaNoticia = FechaNoticia;
-    }
-    
 }
