@@ -17,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Separator;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -116,42 +117,42 @@ public class FXMLNoticiasController implements Initializable {
     }
 
     private void actualizarNoticias() {
-        String sql = "SELECT * FROM noticia ORDER BY idnoticia DESC";
+        String sql = "SELECT * FROM noticia ORDER BY Fecha DESC";
         try {
             ps = con.createStatement();
             rs = ps.executeQuery(sql);
             while (rs.next()) {
                 //Se hace mas grande el panel principal
-                principal.setPrefSize(485, principal.getHeight() + 150);
+                principal.setPrefSize(615, principal.getHeight() + 150);
                 //Se crea el siguiente panel y se agrega al panel principal
                 Pane p = new Pane();
                 principal.getChildren().add(p);
-                p.setPrefSize(485, 160);
+                p.setPrefSize(615, 160);
                 p.setLayoutY(medida);
                 //Creamos el circulo o imagen y se agrega a p que es el panel donde estara
-                Circle c = new Circle(30);
-                p.getChildren().add(c);
-                c.setLayoutX(45);
-                c.setLayoutY(45);
-                c.setFill(Color.CHOCOLATE);
+                ImageView iv = new ImageView("/Imagenes/User.png");
+                iv.setFitWidth(50);
+                iv.setFitHeight(50);
+                p.getChildren().add(iv);
+                iv.setLayoutX(25);
+                iv.setLayoutY(25);
                 //Creamos el nombre de usuario
                 Text tn = new Text(rs.getString("Usuario"));
                 tn.setLayoutX(25);
-                tn.setLayoutY(115);
+                tn.setLayoutY(125);
 
-                Text post = new Text(rs.getString("Post"));
-                post.setLayoutX(95);
-                post.setLayoutY(20);
-                post.setWrappingWidth(384);
+                Text post = new Text(rs.getString("Noticia"));
+                post.setLayoutX(120);
+                post.setLayoutY(30);
+                post.setWrappingWidth(460);
 
                 Text fecha = new Text(rs.getString("Fecha"));
-                System.out.println(rs.getString("Fecha"));
-                fecha.setLayoutX(360);
-                fecha.setLayoutY(130);
+                fecha.setLayoutX(480);
+                fecha.setLayoutY(125);
                 p.getChildren().addAll(tn, post, fecha);
 
                 Separator sp = new Separator(Orientation.HORIZONTAL);
-                sp.setPrefSize(485, 10);
+                sp.setPrefSize(615, 10);
                 sp.setLayoutY(medida + 150);
                 principal.getChildren().add(sp);
 
