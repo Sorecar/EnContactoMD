@@ -129,7 +129,7 @@ public class FXMLNoticiasController implements Initializable {
                 principal.getChildren().add(p);
                 p.setPrefSize(615, 160);
                 p.setLayoutY(medida);
-                //Creamos el circulo o imagen y se agrega a p que es el panel donde estara
+                //Creamos la imagen y se agrega a p que es el panel donde estara
                 ImageView iv = new ImageView("/Imagenes/User.png");
                 iv.setFitWidth(50);
                 iv.setFitHeight(50);

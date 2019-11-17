@@ -1,9 +1,14 @@
 package Controlador;
 
+import Modelo.BaseConexion;
 import Modelo.Noticia;
 import Modelo.NoticiaDAOImplementacion;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,7 +32,12 @@ public class FXMLAgregarNoticiaController implements Initializable {
     public void setId(int Id) {
         this.Id = Id;
     }
-
+    
+    BaseConexion conn = new BaseConexion();
+    Connection con = conn.getConexion();
+    Statement ps = null;
+    ResultSet rs = null;
+    
     @FXML
     private TextField HoraN;
     @FXML
@@ -91,5 +101,17 @@ public class FXMLAgregarNoticiaController implements Initializable {
         stage.setScene(new Scene(root1));
         stage.show();
     }
-
+    @FXML
+    public void llenarText() {
+        try {
+            String sql = "SELECT * FROM usuarios WHERE Id=" + this.Id;
+            ps = con.createStatement();
+            rs = ps.executeQuery(sql);
+            if (rs.next()) {
+                
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
 }
