@@ -1,9 +1,14 @@
 package Controlador;
 
+import Modelo.BaseConexion;
 import Modelo.Usuario;
 import Modelo.UsuarioDAOImplementacion;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +23,12 @@ import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 public class FXMLEditarPerfilController implements Initializable {
+
+    BaseConexion conn = new BaseConexion();
+    Connection con = conn.getConexion();
+    Statement ps = null;
+    ResultSet rs = null;
+
     private int Id;
 
     public int getId() {
@@ -27,8 +38,7 @@ public class FXMLEditarPerfilController implements Initializable {
     public void setId(int Id) {
         this.Id = Id;
     }
-    
-    
+
     @FXML
     private TextField tfNombre;
     @FXML
@@ -42,7 +52,7 @@ public class FXMLEditarPerfilController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         //Aqui tambien tenemos que poner despues de abrir el par aque se llene automaticamente
-    }    
+    }
 
     @FXML
     private void Guardar(ActionEvent event) {
@@ -60,6 +70,7 @@ public class FXMLEditarPerfilController implements Initializable {
             } catch (Exception e) {
                 System.out.println("Boton Guardar-Editar Perfil");
                 System.out.println("Error al guardar los combios del usuario");
+                System.out.println(e);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Por favor llene todos los campos");
@@ -78,7 +89,7 @@ public class FXMLEditarPerfilController implements Initializable {
             System.out.println(i);
         }
     }
-    
+
     private void regresarVentana() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLMenuPrincipal.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
@@ -89,5 +100,20 @@ public class FXMLEditarPerfilController implements Initializable {
         stage.setScene(new Scene(root1));
         stage.show();
     }
-
+    @FXML
+    public void llenarText() {
+        try {
+            String sql = "SELECT * FROM usuarios WHERE Id=" + this.Id;
+            ps = con.createStatement();
+            rs = ps.executeQuery(sql);
+            if (rs.next()) {
+                tfNombre.setText(rs.getString("Usuario"));
+                tfContraseña.setText(rs.getString("Contraseña"));
+                tfTelefono.setText(rs.getString("Telefono"));
+                tfMascota.setText(rs.getString("Mascota"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
 }

@@ -7,6 +7,7 @@ public class Usuario {
     private String Contraseña;
     private String NumTelefono;
     private String NomMascota;
+    private String Estatus;
 
     public Usuario(String usuario, String contraseña, String numTel, String nomMascota) {
         Usuario = usuario;
@@ -58,4 +59,13 @@ public class Usuario {
         NomMascota = nomMascota;
     }
 
+    public String getEstatus() {
+        return Estatus;
+    }
+
+    public void setEstatus(String Estatus) {
+        this.Estatus = Estatus;
+    }
+
+    
 }

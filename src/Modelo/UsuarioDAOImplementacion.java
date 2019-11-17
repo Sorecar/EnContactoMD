@@ -15,7 +15,7 @@ public class UsuarioDAOImplementacion implements UsuarioDAO {
     @Override
     public boolean create(Usuario usuario) throws Exception {
         boolean bandera = false;
-        String INSERT = "INSERT INTO usuarios (id, usuario, contraseña, numTelefono, nomMascota) VALUES (NULL, ?, ?, ?, ?)";
+        String INSERT = "INSERT INTO usuarios (id, usuario, contraseña, Telefono, Mascota, Estatus) VALUES (NULL, ?, ?, ?, ?, 'Activo')";
         try {
             PreparedStatement ps = conexion.prepareStatement(INSERT);
             
@@ -36,7 +36,7 @@ public class UsuarioDAOImplementacion implements UsuarioDAO {
 
     @Override
     public void update(Usuario usuario) throws Exception {
-        String UPDATE = "UPDATE usuarios SET usuario=?, contraseña=?, numTelefono=?,NomMascota=? WHERE id=?";
+        String UPDATE = "UPDATE usuarios SET usuario=?, contraseña=?, Telefono=?, Mascota=? WHERE id=?";
         try {
             PreparedStatement ps = conexion.prepareStatement(UPDATE);
 
