@@ -20,6 +20,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -29,8 +30,15 @@ public class FXMLAdmiController implements Initializable {
     @FXML
     private TableColumn<Usuario, String> ColumUsuario;
     @FXML
+    private TableColumn<Usuario, String> ColumContra;
+    @FXML
+    private TableColumn<Usuario, String> ColumTelefono;
+    @FXML
+    private TableColumn<Usuario, String> ColumMascota;
+    @FXML
     private TableColumn<Usuario, String> ColumEstado;
     @FXML
+    private TableView<Usuario> tablausuarios;
     private ObservableList <Usuario> data = FXCollections.observableArrayList();
 
     public int getId() {
@@ -46,7 +54,7 @@ public class FXMLAdmiController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        DatosTabla();
     }
     
     BaseConexion conn = new BaseConexion();
@@ -55,22 +63,25 @@ public class FXMLAdmiController implements Initializable {
     ResultSet rs = null;
     
     private void DatosTabla(){
-        String sql = "SELECT * FROM flores";
+        String sql = "SELECT * FROM usuarios";
         try {
             this.con = this.conn.getConexion();
             ResultSet rs = this.con.createStatement().executeQuery(sql);
             System.out.println("Si se pudo");
             while(rs.next()){
-                Usuario usuario = new Usuario(rs.getString("Usuario"), rs.getString("Contraseña"), rs.getString("Telefono"), rs.getString("Mascota"));
-                usuario.setEstatus(rs.getString("Estatus"));
-                data.add(usuario);
+                this.data.add(new Usuario(rs.getString("Usuario"), rs.getString("Contraseña"), rs.getString("Telefono"), rs.getString("Mascota")));
+                //usuario.setEstatus(rs.getString("Estatus"));
+                //data.add(usuario);
                 System.out.println("SI");
             }
         } catch (SQLException ex) {
             Logger.getLogger(FXMLAdmiController.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.ColumUsuario.setCellValueFactory(new PropertyValueFactory<>("Usuario"));
-        //this.nombrecolumn.setCellValueFactory(new PropertyValueFactory<>("NOMBRE"));
+        this.ColumContra.setCellValueFactory(new PropertyValueFactory<>("Contraseña"));
+        this.ColumTelefono.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
+        this.ColumMascota.setCellValueFactory(new PropertyValueFactory<>("Mascota"));
+        this.tablausuarios.setItems(data);
     }
     
     
