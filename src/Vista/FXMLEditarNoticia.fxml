@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" onMouseClicked="#RecuperarNoticia" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.FXMLEditarNoticiaController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.FXMLEditarNoticiaController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6585a4" height="100.0" stroke="TRANSPARENT" strokeType="INSIDE" width="600.0" />
       <Text fill="WHITE" layoutX="138.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EDITAR NOTICIA">

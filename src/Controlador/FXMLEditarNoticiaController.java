@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,12 +43,11 @@ public class FXMLEditarNoticiaController implements Initializable {
     @FXML
     private TextArea NoticiaD;
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
+    
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        Platform.runLater(()->{
+            RecuperarNoticia();
+        });
     }
 
     @FXML
@@ -116,8 +116,7 @@ public class FXMLEditarNoticiaController implements Initializable {
         }
     }
 
-    @FXML
-    private void RecuperarNoticia(MouseEvent event) {
+    private void RecuperarNoticia() {
         recuperarUsuario();
         try {
             String sql = "SELECT * FROM noticia WHERE usuario='" + rs.getString("Usuario") + "' ORDER BY idnoticia DESC";

@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -52,7 +53,9 @@ public class FXMLNoticiasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        actualizarNoticias();
+        Platform.runLater(()->{
+            actualizarNoticias();
+        });
     }
 
     @FXML
@@ -131,8 +134,6 @@ public class FXMLNoticiasController implements Initializable {
     private void regresarVentana() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLLogin.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
-        FXMLMenuPrincipalController controller = fxmlLoader.getController();
-        controller.setId(this.Id);
         Stage stage = new Stage();
         stage.setTitle("ENCONTACTO - INICIO DE SESION");
         stage.setScene(new Scene(root1));
