@@ -118,8 +118,8 @@ public class FXMLAdmiController implements Initializable {
     private void regresarVentana() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLLogin.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
-        FXMLMenuPrincipalController controller = fxmlLoader.getController();
-        controller.setId(this.Id);
+        //FXMLMenuPrincipalController controller = fxmlLoader.getController();
+        //controller.setId(this.Id);
         Stage stage = new Stage();
         stage.setTitle("ENCONTACTO - INICIO DE SESION");
         stage.setScene(new Scene(root1));
@@ -131,9 +131,7 @@ public class FXMLAdmiController implements Initializable {
         if(this.tablausuarios.getSelectionModel().getSelectedItem() != null){
                 
                 this.BtnEditar.setDisable(false);
-                this.setId(this.tablausuarios.getSelectionModel().getSelectedItem().getId());
-              
-           
+                System.out.println(this.getId());
             }
             else
         {
@@ -142,11 +140,32 @@ public class FXMLAdmiController implements Initializable {
     }
 
     @FXML
-    private void Editar(ActionEvent event) {
+    private void Editar(ActionEvent event) throws SQLException {
+          
+        this.TextUsuario.setText(this.tablausuarios.getSelectionModel().getSelectedItem().getUsuario());
+        this.TextEstatus.setText(this.tablausuarios.getSelectionModel().getSelectedItem().getEstatus());
+        System.out.println(this.TextUsuario.getText());
+        this.BtnEditar.setDisable(true);
+        this.BtnGuardar.setDisable(false);
+        this.setId(valorid(this.TextUsuario.getText()));
     }
 
     @FXML
     private void update(ActionEvent event) {
+    }
+    
+    public int valorid(String usuario) throws SQLException{
+        try {
+            String sql = "SELECT * FROM usuarios WHERE Usuario=" + usuario;
+            ps = con.createStatement();
+            rs = ps.executeQuery(sql);
+            if (rs.next()) {
+                return (rs.getInt("Id"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return rs.getInt("Id");
     }
     
 }
