@@ -69,9 +69,9 @@ public class FXMLAdmiController implements Initializable {
             ResultSet rs = this.con.createStatement().executeQuery(sql);
             System.out.println("Si se pudo");
             while(rs.next()){
-                this.data.add(new Usuario(rs.getString("Usuario"), rs.getString("Contraseña"), rs.getString("Telefono"), rs.getString("Mascota")));
-                //usuario.setEstatus(rs.getString("Estatus"));
-                //data.add(usuario);
+                Usuario usuario = new Usuario(rs.getString("Usuario"), rs.getString("Contraseña"), rs.getString("Telefono"), rs.getString("Mascota"));
+                usuario.setEstatus(rs.getString("Estatus"));
+                data.add(usuario);
                 System.out.println("SI");
             }
         } catch (SQLException ex) {
@@ -81,6 +81,7 @@ public class FXMLAdmiController implements Initializable {
         this.ColumContra.setCellValueFactory(new PropertyValueFactory<>("Contraseña"));
         this.ColumTelefono.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
         this.ColumMascota.setCellValueFactory(new PropertyValueFactory<>("Mascota"));
+        this.ColumEstado.setCellValueFactory(new PropertyValueFactory<>("Estatus"));
         this.tablausuarios.setItems(data);
     }
     
