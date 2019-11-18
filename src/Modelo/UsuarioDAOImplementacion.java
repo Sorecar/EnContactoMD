@@ -21,8 +21,8 @@ public class UsuarioDAOImplementacion implements UsuarioDAO {
             
             ps.setString(1, usuario.getUsuario());
             ps.setString(2, usuario.getContraseña());
-            ps.setString(3, usuario.getNumTelefono());
-            ps.setString(4, usuario.getNomMascota());
+            ps.setString(3, usuario.getTelefono());
+            ps.setString(4, usuario.getMascota());
 
             ps.executeUpdate();
             ps.close();
@@ -42,8 +42,8 @@ public class UsuarioDAOImplementacion implements UsuarioDAO {
 
             ps.setString(1, usuario.getUsuario());
             ps.setString(2, usuario.getContraseña());
-            ps.setString(3, usuario.getNumTelefono());
-            ps.setString(4, usuario.getNomMascota());
+            ps.setString(3, usuario.getTelefono());
+            ps.setString(4, usuario.getMascota());
             ps.setInt(5, usuario.getId());
             ps.executeUpdate();
             ps.close();
@@ -51,7 +51,6 @@ public class UsuarioDAOImplementacion implements UsuarioDAO {
             //e.printStackTrace();
             throw new RuntimeException(e);
         }
-
     }
 
     @Override

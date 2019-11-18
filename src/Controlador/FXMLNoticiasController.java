@@ -21,8 +21,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -72,7 +70,18 @@ public class FXMLNoticiasController implements Initializable {
     }
 
     @FXML
-    private void EditarNoticia(MouseEvent event) {
+    private void EditarNoticia(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLEditarNoticia.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        FXMLEditarNoticiaController controller = fxmlLoader.getController();
+        controller.setId(this.Id);
+        Stage stage = new Stage();
+        stage.setTitle("ENCONTACTO - EDITAR NOTICIA");
+        stage.setScene(new Scene(root1));
+        stage.show();
+        Stage mainWindow;
+        mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        mainWindow.close();
     }
 
     @FXML

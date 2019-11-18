@@ -3,7 +3,6 @@ package Modelo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Date;
 import java.util.List;
 
@@ -36,7 +35,19 @@ public class NoticiaDAOImplementacion implements NoticiaDAO{
 
     @Override
     public void update(Noticia noticia) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        String UPDATE = "UPDATE noticia SET noticia=? WHERE id=?";
+        try {
+            PreparedStatement ps = conexion.prepareStatement(UPDATE);
+
+            ps.setString(1, noticia.getNoticia());
+            ps.setInt(2, noticia.getId());
+            
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException e) {
+            //e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

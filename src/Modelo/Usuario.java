@@ -5,15 +5,15 @@ public class Usuario {
     private int Id;
     private String Usuario;
     private String Contraseña;
-    private String NumTelefono;
-    private String NomMascota;
+    private String Telefono;
+    private String Mascota;
     private String Estatus;
 
-    public Usuario(String usuario, String contraseña, String numTel, String nomMascota) {
+    public Usuario(String usuario, String contraseña, String telefono, String mascota) {
         Usuario = usuario;
         Contraseña = contraseña;
-        NumTelefono = numTel;
-        NomMascota = nomMascota;
+        Telefono = telefono;
+        Mascota = mascota;
     }
 
     public int getId() {
@@ -41,22 +41,22 @@ public class Usuario {
         Contraseña = contraseña;
     }
 
-    public String getNumTelefono() {
-        return NumTelefono;
+    public String getTelefono() {
+        return Telefono;
     }
 
-    public void setNumTelefono(String numTelefono) {
-        NumTelefono = numTelefono;
-
-    }
-
-    public String getNomMascota() {
-        return NomMascota;
+    public void setTelefono(String telefono) {
+        Telefono = telefono;
 
     }
 
-    public void setNomMascota(String nomMascota) {
-        NomMascota = nomMascota;
+    public String getMascota() {
+        return Mascota;
+
+    }
+
+    public void setMascota(String mascota) {
+        Mascota = mascota;
     }
 
     public String getEstatus() {
