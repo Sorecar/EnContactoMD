@@ -33,9 +33,10 @@ public class FXMLNoticiasController implements Initializable {
     Statement ps = null;
     ResultSet rs = null;
 
-    private int Id;
     @FXML
     private AnchorPane principal;
+
+    private int Id;
 
     public int getId() {
         return Id;
@@ -85,7 +86,18 @@ public class FXMLNoticiasController implements Initializable {
     }
 
     @FXML
-    private void EliminarNoticia(MouseEvent event) {
+    private void EliminarNoticia(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLEliminarNoticia.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        //FXMLEliminarNoticiaController controller = fxmlLoader.getController();
+        //controller.setId(this.Id);
+        Stage stage = new Stage();
+        stage.setTitle("ENCONTACTO - EDITAR NOTICIA");
+        stage.setScene(new Scene(root1));
+        stage.show();
+        Stage mainWindow;
+        mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        mainWindow.close();
     }
 
     @FXML
@@ -101,6 +113,21 @@ public class FXMLNoticiasController implements Initializable {
         }
     }
 
+    @FXML
+    private void Inicio(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLMenuPrincipal.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        FXMLMenuPrincipalController controller = fxmlLoader.getController();
+        controller.setId(this.Id);
+        Stage stage = new Stage();
+        stage.setTitle("ENCONTACTO - MENU PRINCIPAL");
+        stage.setScene(new Scene(root1));
+        stage.show();
+        Stage mainWindow;
+        mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        mainWindow.close();
+    }
+    
     private void regresarVentana() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLLogin.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
@@ -110,19 +137,6 @@ public class FXMLNoticiasController implements Initializable {
         stage.setTitle("ENCONTACTO - INICIO DE SESION");
         stage.setScene(new Scene(root1));
         stage.show();
-    }
-
-    @FXML
-    private void Inicio(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLMenuPrincipal.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setTitle("ENCONTACTO - MENU PRINCIPAL");
-        stage.setScene(new Scene(root1));
-        stage.show();
-        Stage mainWindow;
-        mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        mainWindow.close();
     }
 
     private void actualizarNoticias() {

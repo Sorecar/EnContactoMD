@@ -44,9 +44,7 @@ public class FXMLMenuPrincipalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        //Aqui le falta para agregarle el nombre al usuario, si tengo la variable pero como se inicializa antes de que
-        //le mandemos el valor pues se pone en null y no jala :v
-        
+
     }
 
     @FXML
@@ -97,7 +95,12 @@ public class FXMLMenuPrincipalController implements Initializable {
     @FXML
     private void CerrarSesion(MouseEvent event) {
         try {
-            regresarVentana();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLLogin.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("ENCONTACTO - INICIO DE SESION");
+            stage.setScene(new Scene(root1));
+            stage.show();
             Stage mainWindow;
             mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
             mainWindow.close();
@@ -105,15 +108,6 @@ public class FXMLMenuPrincipalController implements Initializable {
             System.out.println("Boton Cancelar RUC");
             System.out.println(i);
         }
-    }
-
-    private void regresarVentana() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLLogin.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setTitle("ENCONTACTO - INICIO DE SESION");
-        stage.setScene(new Scene(root1));
-        stage.show();
     }
 
     private String recuperarUsuario(int id) {
@@ -130,8 +124,4 @@ public class FXMLMenuPrincipalController implements Initializable {
         return null;
     }
 
-    @FXML
-    private void mamada(MouseEvent event) {
-        user.setText("Hola " + recuperarUsuario(getId()));
-    }
 }

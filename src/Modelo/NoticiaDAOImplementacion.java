@@ -35,7 +35,7 @@ public class NoticiaDAOImplementacion implements NoticiaDAO{
 
     @Override
     public void update(Noticia noticia) throws Exception {
-        String UPDATE = "UPDATE noticia SET noticia=? WHERE id=?";
+        String UPDATE = "UPDATE noticia SET noticia=? WHERE idnoticia=?";
         try {
             PreparedStatement ps = conexion.prepareStatement(UPDATE);
 
@@ -45,7 +45,8 @@ public class NoticiaDAOImplementacion implements NoticiaDAO{
             ps.executeUpdate();
             ps.close();
         } catch (SQLException e) {
-            //e.printStackTrace();
+            System.out.println(e);
+            System.out.println("Error desde aca");
             throw new RuntimeException(e);
         }
     }

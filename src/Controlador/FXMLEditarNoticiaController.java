@@ -10,8 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,7 +29,6 @@ public class FXMLEditarNoticiaController implements Initializable {
     Statement ps = null;
     ResultSet rs = null;
 
-    private String usActual;
     private int Id;
 
     public int getId() {
@@ -97,6 +94,8 @@ public class FXMLEditarNoticiaController implements Initializable {
     private void regresarVentana() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLNoticias.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
+        FXMLNoticiasController controller = fxmlLoader.getController();
+        controller.setId(this.Id);
         Stage stage = new Stage();
         stage.setTitle("ENCONTACTO - NOTICIAS");
         stage.setScene(new Scene(root1));
