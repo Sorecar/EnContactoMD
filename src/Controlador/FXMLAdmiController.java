@@ -14,14 +14,17 @@ import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -41,6 +44,14 @@ public class FXMLAdmiController implements Initializable {
     @FXML
     private TableView<Usuario> tablausuarios;
     private ObservableList <Usuario> data = FXCollections.observableArrayList();
+    @FXML
+    private Button BtnEditar;
+    @FXML
+    private TextField TextEstatus;
+    @FXML
+    private Button BtnGuardar;
+    @FXML
+    private TextField TextUsuario;
 
     public int getId() {
         return Id;
@@ -113,6 +124,29 @@ public class FXMLAdmiController implements Initializable {
         stage.setTitle("ENCONTACTO - INICIO DE SESION");
         stage.setScene(new Scene(root1));
         stage.show();
+    }
+
+    @FXML
+    private void modificar(MouseEvent event) {
+        if(this.tablausuarios.getSelectionModel().getSelectedItem() != null){
+                
+                this.BtnEditar.setDisable(false);
+                this.setId(this.tablausuarios.getSelectionModel().getSelectedItem().getId());
+              
+           
+            }
+            else
+        {
+            this.BtnGuardar.setDisable(true);            
+        }
+    }
+
+    @FXML
+    private void Editar(ActionEvent event) {
+    }
+
+    @FXML
+    private void update(ActionEvent event) {
     }
     
 }
