@@ -28,10 +28,10 @@
             <Font name="Yu Gothic Bold" size="12.0" />
          </font>
       </Hyperlink>
-      <TableView layoutX="171.0" layoutY="100.0" prefHeight="225.0" prefWidth="421.0">
+      <TableView layoutX="214.0" layoutY="122.0" prefHeight="225.0" prefWidth="322.0">
         <columns>
-          <TableColumn prefWidth="161.0" text="USUARIO" />
-          <TableColumn prefWidth="119.0" text="ESTADO" />
+          <TableColumn fx:id="ColumUsuario" prefWidth="161.0" text="USUARIO" />
+          <TableColumn fx:id="ColumEstado" prefWidth="161.0" text="ESTADO" />
         </columns>
       </TableView>
       <Hyperlink layoutX="21.0" layoutY="155.0" prefHeight="22.0" prefWidth="128.0" text="Agregar administrador" />
