@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -54,7 +55,9 @@ public class FXMLAdmiController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        DatosTabla();
+        Platform.runLater(()->{
+            DatosTabla();
+        });
     }
     
     BaseConexion conn = new BaseConexion();

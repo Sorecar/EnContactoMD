@@ -92,8 +92,8 @@ public class FXMLNoticiasController implements Initializable {
     private void EliminarNoticia(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLEliminarNoticia.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
-        //FXMLEliminarNoticiaController controller = fxmlLoader.getController();
-        //controller.setId(this.Id);
+        FXMLEliminarNoticiaController controller = fxmlLoader.getController();
+        controller.setId(this.Id);
         Stage stage = new Stage();
         stage.setTitle("ENCONTACTO - EDITAR NOTICIA");
         stage.setScene(new Scene(root1));

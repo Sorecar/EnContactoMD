@@ -23,7 +23,6 @@ import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 public class FXMLAgregarNoticiaController implements Initializable {
-    private String activo;
     private int Id;
 
     public int getId() {
@@ -44,30 +43,34 @@ public class FXMLAgregarNoticiaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Platform.runLater(()->{
-            
+        Platform.runLater(() -> {
+
         });
     }
 
     @FXML
     private void Guardar(ActionEvent event) {
-        if (!NoticiaD.getText().isEmpty()) {
-            recuperarUsuario();
-            Noticia noticia = new Noticia(activo, NoticiaD.getText());
-            NoticiaDAOImplementacion noticiaDAO = new NoticiaDAOImplementacion();
-            try {
-                noticiaDAO.create(noticia);
-                JOptionPane.showMessageDialog(null, "Noticia publicada con exito");
-                regresarVentana();
-                Stage mainWindow;
-                mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                mainWindow.close();
-            } catch (Exception e) {
-                System.out.println("bt Guardar RUC");
-                System.out.println("Error Noticia NO Publicada");
+        try {
+            if (!NoticiaD.getText().isEmpty()) {
+                recuperarUsuario();
+                Noticia noticia = new Noticia(rs.getString("Usuario"), NoticiaD.getText());
+                NoticiaDAOImplementacion noticiaDAO = new NoticiaDAOImplementacion();
+                try {
+                    noticiaDAO.create(noticia);
+                    JOptionPane.showMessageDialog(null, "Noticia publicada con exito");
+                    regresarVentana();
+                    Stage mainWindow;
+                    mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    mainWindow.close();
+                } catch (Exception e) {
+                    System.out.println("bt Guardar RUC");
+                    System.out.println("Error Noticia NO Publicada");
+                }
+            } else {
+                System.out.println("Algun campo esta vacio");
             }
-        } else {
-            System.out.println("Algun campo esta vacio");
+        } catch (SQLException e) {
+            System.out.println(e);
         }
     }
 
@@ -100,9 +103,7 @@ public class FXMLAgregarNoticiaController implements Initializable {
             String sql = "SELECT * FROM usuarios WHERE Id=" + this.Id;
             ps = con.createStatement();
             rs = ps.executeQuery(sql);
-            if(rs.next()){
-                activo = rs.getString("Usuario");
-            }
+            rs.next();
         } catch (SQLException e) {
             System.out.println(e);
         }
