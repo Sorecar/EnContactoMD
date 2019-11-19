@@ -154,7 +154,7 @@ public class FXMLNoticiasController implements Initializable {
                 p.setPrefSize(615, 160);
                 p.setLayoutY(medida);
                 //Creamos la imagen y se agrega a p que es el panel donde estara
-                ImageView iv = new ImageView("/Imagenes/User.png");
+                ImageView iv = new ImageView("/Imagenes/userr.png");
                 iv.setFitWidth(50);
                 iv.setFitHeight(50);
                 p.getChildren().add(iv);
