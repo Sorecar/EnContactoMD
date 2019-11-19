@@ -11,7 +11,7 @@
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.FXMLMenuPrincipalController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c4c7" height="400.0" layoutX="-4.0" layoutY="3.0" stroke="#ffffff00" strokeType="INSIDE" width="608.0" />
-      <ImageView fitHeight="40.0" fitWidth="51.0" layoutX="542.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="40.0" fitWidth="51.0" layoutX="542.0" layoutY="354.0" onMouseClicked="#EditarPerfil" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Imagenes/Perfil.png" />
          </image>
@@ -21,7 +21,7 @@
             <Font name="Yu Gothic Regular" size="14.0" />
          </font>
       </Hyperlink>
-      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="113.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="113.0" layoutY="222.0" onMouseClicked="#Noticias" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Imagenes/Noticias.png" />
          </image>
@@ -31,7 +31,7 @@
             <Font name="Yu Gothic Bold" size="18.0" />
          </font>
       </Hyperlink>
-      <ImageView fitHeight="100.0" fitWidth="101.0" layoutX="361.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="100.0" fitWidth="101.0" layoutX="361.0" layoutY="222.0" onMouseClicked="#Eventos" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Imagenes/Eventos.png" />
          </image>

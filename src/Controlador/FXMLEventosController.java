@@ -88,4 +88,8 @@ public class FXMLEventosController implements Initializable {
     private void EliminarEvento(MouseEvent event) {
     }
 
+    @FXML
+    private void EditarEvento(MouseEvent event) {
+    }
+
 }

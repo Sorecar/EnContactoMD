@@ -1,7 +1,6 @@
 package Controlador;
 
 import Modelo.BaseConexion;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -33,6 +32,7 @@ public class FXMLLoginController implements Initializable {
     ResultSet rs = null;
 
     int idUsuario = 0;
+    String estatus;
     String tipoUsuario = "";
 
     /**
@@ -49,20 +49,24 @@ public class FXMLLoginController implements Initializable {
             validar(tfUsuario.getText(), pfPass.getText()); //Aqui se realiza la consulta si es usuario o admin
             if (idUsuario != 0 || tipoUsuario != "") {
                 if (tipoUsuario == "Usuario") {
-                    try {
-                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLMenuPrincipal.fxml"));
-                        Parent root1 = (Parent) fxmlLoader.load();
-                        FXMLMenuPrincipalController controller = fxmlLoader.getController();
-                        controller.setId(idUsuario);
-                        Stage stage = new Stage();
-                        stage.setTitle("EN CONTACTO");
-                        stage.setScene(new Scene(root1));
-                        stage.show();
-                        Stage mainWindow;
-                        mainWindow = (Stage) ((Node) eventI.getSource()).getScene().getWindow();
-                        mainWindow.close();
-                    } catch (Exception i) {
-                        System.out.println(i);
+                    if (estatus.equals("Activo")) {
+                        try {
+                            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLMenuPrincipal.fxml"));
+                            Parent root1 = (Parent) fxmlLoader.load();
+                            FXMLMenuPrincipalController controller = fxmlLoader.getController();
+                            controller.setId(idUsuario);
+                            Stage stage = new Stage();
+                            stage.setTitle("EN CONTACTO");
+                            stage.setScene(new Scene(root1));
+                            stage.show();
+                            Stage mainWindow;
+                            mainWindow = (Stage) ((Node) eventI.getSource()).getScene().getWindow();
+                            mainWindow.close();
+                        } catch (Exception i) {
+                            System.out.println(i);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Lo sentimos tu cuenta esta bloqueada");
                     }
                 } else if (tipoUsuario == "Admin") {
                     try {
@@ -79,18 +83,20 @@ public class FXMLLoginController implements Initializable {
                         mainWindow.close();
                     } catch (Exception i) {
                         System.out.println(i);
+
                     }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Usuario no encontrado");
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Usuario no encontrado");
+                JOptionPane.showMessageDialog(null, "Por favor llene todos los campos");
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Por favor llene todos los campos");
         }
     }
 
     @FXML
-    private void Registrarse(ActionEvent event) {
+    private void Registrarse(ActionEvent event
+    ) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLRegistrarse.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
@@ -108,7 +114,8 @@ public class FXMLLoginController implements Initializable {
     }
 
     @FXML
-    private void RecuperarPass(ActionEvent event) {
+    private void RecuperarPass(ActionEvent event
+    ) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLRecuperarContra.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
@@ -125,6 +132,7 @@ public class FXMLLoginController implements Initializable {
         }
     }
     //Comprueba si existe el usuario primero y despues el administrador en sus respectivas bases de datos
+
     private void validar(String usuario, String contraseña) {
         //Checamos si es usuario
         try {
@@ -134,6 +142,7 @@ public class FXMLLoginController implements Initializable {
             if (rs.next()) {
                 idUsuario = rs.getInt("Id");
                 tipoUsuario = "Usuario";
+                estatus = rs.getString("Estatus");
             } else {
                 //Checamos si es administrador ya que en usuario no se encontro
                 sql = "SELECT * FROM Administrador WHERE Nombre='" + usuario + "' && Contraseña='" + contraseña + "'";

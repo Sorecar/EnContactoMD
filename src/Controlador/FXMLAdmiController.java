@@ -119,8 +119,7 @@ public class FXMLAdmiController implements Initializable {
     private void regresarVentana() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLLogin.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
-        //FXMLMenuPrincipalController controller = fxmlLoader.getController();
-        //controller.setId(this.Id);
+        
         Stage stage = new Stage();
         stage.setTitle("ENCONTACTO - INICIO DE SESION");
         stage.setScene(new Scene(root1));
