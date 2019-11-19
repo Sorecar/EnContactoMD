@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.FXMLAgregarEventoController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6585a4" height="100.0" stroke="TRANSPARENT" strokeType="INSIDE" width="600.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3d4b57" height="100.0" stroke="TRANSPARENT" strokeType="INSIDE" width="600.0" />
       <Text fill="WHITE" layoutX="138.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AGREGAR EVENTO">
          <font>
             <Font name="Yu Gothic Regular" size="36.0" />

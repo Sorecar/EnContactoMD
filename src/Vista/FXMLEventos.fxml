@@ -12,11 +12,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.FXMLEventosController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6585a4" height="100.0" stroke="TRANSPARENT" strokeType="INSIDE" width="750.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6585a4" height="500.0" layoutY="5.0" stroke="TRANSPARENT" strokeType="INSIDE" width="133.0" />
-      <Hyperlink layoutX="13.0" layoutY="454.0" onMouseClicked="#CerrarSesion" text="CERRAR SESION" textFill="WHITE">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3d4b57" height="100.0" stroke="TRANSPARENT" strokeType="INSIDE" width="750.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3d4b57" height="500.0" layoutY="5.0" stroke="TRANSPARENT" strokeType="INSIDE" width="133.0" />
+      <Hyperlink layoutX="18.0" layoutY="454.0" onMouseClicked="#CerrarSesion" text="Cerrar sesión" textFill="WHITE">
          <font>
-            <Font name="Yu Gothic Bold" size="12.0" />
+            <Font name="Yu Gothic Regular" size="14.0" />
          </font>
       </Hyperlink>
       <ScrollPane layoutX="133.0" layoutY="100.0" prefHeight="334.0" prefWidth="617.0">
@@ -29,25 +29,25 @@
             <Image url="@../Imagenes/EC.png" />
          </image>
       </ImageView>
-      <Text fill="WHITE" layoutX="292.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EVENTOS">
+      <Text fill="WHITE" layoutX="358.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EVENTOS">
          <font>
             <Font name="Yu Gothic Regular" size="36.0" />
          </font>
       </Text>
-      <Button layoutX="645.0" layoutY="453.0" mnemonicParsing="false" onAction="#Inicio" prefHeight="25.0" prefWidth="75.0" text="INICIO" />
+      <Button layoutX="645.0" layoutY="453.0" mnemonicParsing="false" onAction="#Inicio" prefHeight="25.0" prefWidth="75.0" text="Inicio" />
       <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="150.0" layoutY="445.0" onMouseClicked="#AgregarEvento" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Imagenes/Nuevo.png" />
+            <Image url="@../Imagenes/AGREGAR.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="40.0" fitWidth="57.0" layoutX="259.0" layoutY="445.0" onMouseClicked="#EliminarEvento" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Imagenes/Borrar.png" />
+            <Image url="@../Imagenes/ELIMINAR.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="40.0" fitWidth="57.0" layoutX="204.0" layoutY="445.0" onMouseClicked="#EditarEvento" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Imagenes/Editar.png" />
+            <Image url="@../Imagenes/EDITAR%20(2).png" />
          </image>
       </ImageView>
    </children>

@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -11,37 +13,53 @@
 
 <AnchorPane id="AnchorPane" onMouseClicked="#llenarText" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.FXMLEditarPerfilController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6585a4" height="100.0" stroke="TRANSPARENT" strokeType="INSIDE" width="600.0" />
-      <Text fill="WHITE" layoutX="202.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar Perfil">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c4c7" height="400.0" layoutX="-3.0" layoutY="3.0" stroke="#ffffff00" strokeType="INSIDE" width="607.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3d4b57" height="151.0" layoutX="-3.0" stroke="TRANSPARENT" strokeType="INSIDE" width="607.0" />
+      <Text fill="WHITE" layoutX="247.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar Perfil">
+         <font>
+            <Font name="Yu Gothic Regular" size="20.0" />
+         </font>
+      </Text>
+      <Label layoutX="63.0" layoutY="173.0" text="Nombre de usuario:" textFill="#3d4b57">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfNombre" layoutX="370.0" layoutY="170.0" onAction="#Guardar" />
+      <Label layoutX="63.0" layoutY="215.0" text="Contraseña:" textFill="#3d4b57">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="tfContraseña" layoutX="370.0" layoutY="212.0" onAction="#Guardar" />
+      <Label layoutX="63.0" layoutY="258.0" text="Número de teléfono:" textFill="#3d4b57">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfTelefono" layoutX="370.0" layoutY="255.0" onAction="#Guardar" />
+      <Label layoutX="63.0" layoutY="303.0" text="¿Cuál es el nombre de tu mascota?" textFill="#3d4b57">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="tfMascota" layoutX="370.0" layoutY="300.0" onAction="#Guardar" />
+      <Button layoutX="22.0" layoutY="358.0" mnemonicParsing="false" onAction="#Guardar" text="Guardar cambios" />
+      <Button layoutX="519.0" layoutY="358.0" mnemonicParsing="false" onAction="#Cancelar" text="Cancelar" />
+      <ImageView fitHeight="88.0" fitWidth="80.0" layoutX="186.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/EC.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="304.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="en" wrappingWidth="80.0">
          <font>
             <Font name="Yu Gothic Regular" size="36.0" />
          </font>
       </Text>
-      <Label layoutX="70.0" layoutY="137.0" text="Nombre de usuario:">
+      <Text fill="WHITE" layoutX="276.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="contacto">
          <font>
-            <Font size="15.0" />
+            <Font name="Yu Gothic Regular" size="36.0" />
          </font>
-      </Label>
-      <TextField fx:id="tfNombre" layoutX="370.0" layoutY="135.0" onAction="#Guardar" />
-      <Label layoutX="71.0" layoutY="192.0" text="Contraseña:">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <PasswordField fx:id="tfContraseña" layoutX="370.0" layoutY="190.0" onAction="#Guardar" />
-      <Label layoutX="71.0" layoutY="247.0" text="Numero de telefono:">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <TextField fx:id="tfTelefono" layoutX="370.0" layoutY="245.0" onAction="#Guardar" />
-      <Label layoutX="71.0" layoutY="302.0" text="¿Cual es el nombre de tu mascota?">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <PasswordField fx:id="tfMascota" layoutX="370.0" layoutY="300.0" onAction="#Guardar" />
-      <Button layoutX="105.0" layoutY="345.0" mnemonicParsing="false" onAction="#Guardar" text="GUARDAR CAMBIOS" />
-      <Button layoutX="407.0" layoutY="345.0" mnemonicParsing="false" onAction="#Cancelar" text="CANCELAR" />
+      </Text>
    </children>
 </AnchorPane>

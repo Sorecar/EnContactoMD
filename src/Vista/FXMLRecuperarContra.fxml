@@ -4,37 +4,56 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.FXMLRecuperarContraController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6585a4" height="100.0" stroke="TRANSPARENT" strokeType="INSIDE" width="600.0" />
-      <Label layoutX="114.0" layoutY="29.0" text="Recuperar Contraseña" textFill="WHITE">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c4c7" height="400.0" layoutX="-6.0" stroke="#ffffff00" strokeType="INSIDE" width="607.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3d4b57" height="153.0" stroke="TRANSPARENT" strokeType="INSIDE" width="601.0" />
+      <Label layoutX="200.0" layoutY="115.0" text="Recuperar contraseña" textFill="WHITE">
+         <font>
+            <Font name="Yu Gothic Regular" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="236.0" layoutY="172.0" text="Nombre de usuario:" textFill="#3d4b57">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="TfUsuario" layoutX="208.0" layoutY="200.0" onAction="#BtEnviarContra" prefHeight="25.0" prefWidth="189.0" />
+      <Label layoutX="230.0" layoutY="236.0" text="Nombre de tu mascota:" textFill="#3d4b57">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="TfMascota" layoutX="207.0" layoutY="265.0" onAction="#BtEnviarContra" prefHeight="25.0" prefWidth="189.0" />
+      <Label layoutX="239.0" layoutY="298.0" text="Número de teléfono:" textFill="#3d4b57">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="TfTelefono" layoutX="206.0" layoutY="324.0" onAction="#BtEnviarContra" prefHeight="25.0" prefWidth="189.0" />
+      <Button layoutX="20.0" layoutY="356.0" mnemonicParsing="false" onAction="#BtEnviarContra" text="Ver Contraseña" />
+      <Button layoutX="518.0" layoutY="356.0" mnemonicParsing="false" onAction="#Cancelar" text="Cancelar" />
+      <ImageView fitHeight="88.0" fitWidth="80.0" layoutX="182.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/EC.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="266.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="contacto">
          <font>
             <Font name="Yu Gothic Regular" size="36.0" />
          </font>
-      </Label>
-      <Label layoutX="166.0" layoutY="117.0" text="¿Cúal es tu nombre de usuario?">
+      </Text>
+      <Text fill="WHITE" layoutX="294.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="en" wrappingWidth="80.0">
          <font>
-            <Font size="18.0" />
+            <Font name="Yu Gothic Regular" size="36.0" />
          </font>
-      </Label>
-      <TextField fx:id="TfUsuario" layoutX="197.0" layoutY="160.0" onAction="#BtEnviarContra" prefHeight="25.0" prefWidth="189.0" />
-      <Label layoutX="153.0" layoutY="200.0" text="¿Cúal es el nombre de tu mascota?">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <PasswordField fx:id="TfMascota" layoutX="197.0" layoutY="235.0" onAction="#BtEnviarContra" prefHeight="25.0" prefWidth="189.0" />
-      <Label layoutX="162.0" layoutY="270.0" text="¿Cúal es tu número de telefono?">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <PasswordField fx:id="TfTelefono" layoutX="197.0" layoutY="308.0" onAction="#BtEnviarContra" prefHeight="25.0" prefWidth="189.0" />
-      <Button layoutX="153.0" layoutY="356.0" mnemonicParsing="false" onAction="#BtEnviarContra" text="Ver Contraseña" />
-      <Button layoutX="368.0" layoutY="356.0" mnemonicParsing="false" onAction="#Cancelar" text="Cancelar" />
+      </Text>
    </children>
 </AnchorPane>

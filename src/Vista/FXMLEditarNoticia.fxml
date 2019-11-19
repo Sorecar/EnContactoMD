@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -9,19 +11,25 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.FXMLEditarNoticiaController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6585a4" height="100.0" stroke="TRANSPARENT" strokeType="INSIDE" width="600.0" />
-      <Text fill="WHITE" layoutX="138.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EDITAR NOTICIA">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c4c7" height="400.0" stroke="#ffffff00" strokeType="INSIDE" width="621.0" />
+      <TextArea fx:id="NoticiaD" layoutX="99.0" layoutY="144.0" prefHeight="180.0" prefWidth="493.0" promptText="Max 500 caracteres" wrapText="true" />
+      <Button layoutX="24.0" layoutY="356.0" mnemonicParsing="false" onAction="#Guardar" prefHeight="25.0" prefWidth="75.0" text="Guardar" />
+      <Button layoutX="530.0" layoutY="356.0" mnemonicParsing="false" onAction="#Cancelar" text="Cancelar" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3d4b57" height="114.0" stroke="TRANSPARENT" strokeType="INSIDE" width="621.0" />
+      <Text fill="#3d4b57" layoutX="27.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Noticia: ">
+         <font>
+            <Font name="Yu Gothic Regular" size="18.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="88.0" fitWidth="80.0" layoutX="119.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/EC.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="212.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EDITAR NOTICIA">
          <font>
             <Font name="Yu Gothic Regular" size="36.0" />
          </font>
       </Text>
-      <Text layoutX="29.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOTICIA: ">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <TextArea fx:id="NoticiaD" layoutX="141.0" layoutY="139.0" prefHeight="180.0" prefWidth="415.0" promptText="Max 500 caracteres" wrapText="true" />
-      <Button layoutX="138.0" layoutY="343.0" mnemonicParsing="false" onAction="#Guardar" prefHeight="25.0" prefWidth="75.0" text="GUARDAR" />
-      <Button layoutX="478.0" layoutY="343.0" mnemonicParsing="false" onAction="#Cancelar" text="CANCELAR" />
    </children>
 </AnchorPane>

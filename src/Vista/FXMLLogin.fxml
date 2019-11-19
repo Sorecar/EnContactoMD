@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.PasswordField?>
@@ -13,26 +14,35 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.FXMLLoginController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6585a4" height="100.0" stroke="TRANSPARENT" strokeType="INSIDE" width="600.0" />
-      <Text fill="WHITE" layoutX="161.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EN CONTACTO" wrappingWidth="278.1484375">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c4c7" height="400.0" stroke="#ffffff00" strokeType="INSIDE" width="600.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3d4b57" height="100.0" stroke="TRANSPARENT" strokeType="INSIDE" width="600.0" />
+      <Text fill="WHITE" layoutX="300.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="en" wrappingWidth="149.0">
          <font>
             <Font name="Yu Gothic Regular" size="36.0" />
          </font>
       </Text>
-      <TextField fx:id="tfUsuario" layoutX="217.0" layoutY="231.0" onAction="#Ingresar" promptText="Usuario" />
-      <PasswordField fx:id="pfPass" layoutX="217.0" layoutY="276.0" onAction="#Ingresar" promptText="Contraseña" />
-      <Button layoutX="256.0" layoutY="317.0" mnemonicParsing="false" onAction="#Ingresar" text="INGRESAR" />
-      <Hyperlink layoutX="36.0" layoutY="329.0" onAction="#Registrarse" text="REGISTRARSE" />
-      <Hyperlink layoutX="36.0" layoutY="352.0" onAction="#RecuperarPass" text="RECUPERAR CONTRASEÑA" />
-      <ImageView fitHeight="85.0" fitWidth="80.0" layoutX="252.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="tfUsuario" layoutX="233.0" layoutY="233.0" onAction="#Ingresar" prefHeight="23.0" prefWidth="149.0" promptText="Usuario" />
+      <PasswordField fx:id="pfPass" layoutX="233.0" layoutY="274.0" onAction="#Ingresar" promptText="Contraseña" />
+      <Button layoutX="278.0" layoutY="317.0" mnemonicParsing="false" onAction="#Ingresar" text="Ingresar" wrapText="true">
+         <cursor>
+            <Cursor fx:constant="DISAPPEAR" />
+         </cursor></Button>
+      <Hyperlink layoutX="21.0" layoutY="342.0" onAction="#Registrarse" text="Registrarse" textFill="#3d4b57" />
+      <Hyperlink layoutX="21.0" layoutY="363.0" onAction="#RecuperarPass" text="Recuperar contraseña" textFill="#3d4b57" />
+      <ImageView fitHeight="85.0" fitWidth="80.0" layoutX="267.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Imagenes/User.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="88.0" fitWidth="80.0" layoutX="36.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="88.0" fitWidth="80.0" layoutX="165.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Imagenes/EC.png" />
          </image>
       </ImageView>
+      <Text fill="WHITE" layoutX="275.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="contacto">
+         <font>
+            <Font name="Yu Gothic Regular" size="36.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
