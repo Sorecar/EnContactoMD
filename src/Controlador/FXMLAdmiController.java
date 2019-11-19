@@ -77,6 +77,7 @@ public class FXMLAdmiController implements Initializable {
     ResultSet rs = null;
     
     private void DatosTabla(){
+        this.tablausuarios.getItems().clear();
         String sql = "SELECT * FROM usuarios";
         try {
             this.con = this.conn.getConexion();
@@ -128,44 +129,51 @@ public class FXMLAdmiController implements Initializable {
 
     @FXML
     private void modificar(MouseEvent event) {
+        String nombre = "";
         if(this.tablausuarios.getSelectionModel().getSelectedItem() != null){
-                
                 this.BtnEditar.setDisable(false);
-                System.out.println(this.getId());
-            }
-            else
-        {
+                nombre = this.tablausuarios.getSelectionModel().getSelectedItem().getUsuario();
+                System.out.println(nombre);
+                try {
+                    String sql = "SELECT * FROM usuarios WHERE Usuario='"+nombre+"'";
+                    this.con = this.conn.getConexion();
+                    ResultSet rs = this.con.createStatement().executeQuery(sql);
+                    if (rs.next()) {
+                        this.setId(rs.getInt("Id"));
+                        System.out.println(this.getId());
+                    }
+                } catch (SQLException e) {
+                    System.out.println(e);
+                }
+        }else{
             this.BtnGuardar.setDisable(true);            
         }
     }
 
     @FXML
     private void Editar(ActionEvent event) throws SQLException {
-          
         this.TextUsuario.setText(this.tablausuarios.getSelectionModel().getSelectedItem().getUsuario());
         this.TextEstatus.setText(this.tablausuarios.getSelectionModel().getSelectedItem().getEstatus());
-        System.out.println(this.TextUsuario.getText());
         this.BtnEditar.setDisable(true);
         this.BtnGuardar.setDisable(false);
-        this.setId(valorid(this.TextUsuario.getText()));
     }
 
     @FXML
     private void update(ActionEvent event) {
-    }
-    
-    public int valorid(String usuario) throws SQLException{
+        String NewEstatus = this.TextEstatus.getText();
+        String sql = "UPDATE usuarios SET Estatus='"+NewEstatus+"' WHERE Id="+this.getId();
         try {
-            String sql = "SELECT * FROM usuarios WHERE Usuario=" + usuario;
-            ps = con.createStatement();
-            rs = ps.executeQuery(sql);
-            if (rs.next()) {
-                return (rs.getInt("Id"));
-            }
-        } catch (SQLException e) {
-            System.out.println(e);
+            this.con = this.conn.getConexion();
+            this.con.createStatement().execute(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLMenuPrincipalController.class.getName())
+                    .log(Level.SEVERE, null, ex);
         }
-        return rs.getInt("Id");
+        this.DatosTabla();
+        this.TextUsuario.setText("");
+        this.TextEstatus.setText("");
+        this.BtnEditar.setDisable(false);
+        this.BtnGuardar.setDisable(true);
     }
     
 }
