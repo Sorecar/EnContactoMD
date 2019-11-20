@@ -68,7 +68,19 @@ public class EventoDAOImplementacion implements EventoDAO {
 
     @Override
     public boolean remove(int evento) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        String DELETE = "DELETE FROM eventos WHERE Id=?";
+        try {
+            ps = conexion.prepareStatement(DELETE);
+            ps.setInt(1, evento);
+
+            ps.executeUpdate();
+            ps.close();
+            bandera = true;
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            return bandera;
+        }
     }
 
     @Override
