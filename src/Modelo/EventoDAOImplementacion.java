@@ -1,30 +1,39 @@
 package Modelo;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 import java.util.List;
 
 public class EventoDAOImplementacion implements EventoDAO {
     
     BaseConexion base = new BaseConexion();
     Connection conexion = base.getConexion();
-    Statement stm;
+    PreparedStatement ps;
+
+    boolean bandera = false;
 
     @Override
     public boolean create(Evento evento) throws Exception {
-        boolean bandera=false;
-        try{
-            stm = conexion.createStatement();
-            String query = "INSERT INTO eventos(ConInfo,FechaEvento,HoraEvento,Evento)"
-                    + " VALUES('"+evento.getConInfo()+"', '"+evento.getFechaEvento()+"', '"+evento.getHoraEvento()+"', '"+evento.getEvento()+"')";
-            stm.execute(query);
-            bandera=true;
-        }catch(SQLException ex) {
+        String INSERT = "INSERT INTO eventos (Id, Nombre, Contacto, Fecha, Hora, Lugar, Descripcion, Usuario) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)";
+        try {
+            ps = conexion.prepareStatement(INSERT);
+            ps.setString(1, evento.getNombre());
+            ps.setString(2, evento.getContacto());
+            ps.setString(3, evento.getFecha());
+            ps.setString(4, evento.getHora());
+            ps.setString(5, evento.getLugar());
+            ps.setString(6, evento.getDescripcion());
+            ps.setString(7, evento.getUsuario());
+
+            ps.executeUpdate();
+            ps.close();
+            bandera = true;
+        } catch (SQLException ex) {
             System.out.println(ex);
-            bandera=false;
-        }
-        finally{
+        } finally {
             return bandera;
         }
     }
