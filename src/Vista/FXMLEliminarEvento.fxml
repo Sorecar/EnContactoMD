@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.FXMLEliminarEventoController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c4c7" height="400.0" layoutX="-4.0" layoutY="14.0" stroke="#ffffff00" strokeType="INSIDE" width="607.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3d4b57" height="153.0" layoutX="-4.0" layoutY="-1.0" stroke="TRANSPARENT" strokeType="INSIDE" width="607.0" />
+      <Text fill="WHITE" layoutX="211.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ELIMINAR NOTICIA">
+         <font>
+            <Font name="Yu Gothic Regular" size="20.0" />
+         </font>
+      </Text>
+      <Button layoutX="24.0" layoutY="369.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="25.0" prefWidth="75.0" text="Eliminar" />
+      <Button layoutX="515.0" layoutY="369.0" mnemonicParsing="false" onAction="#Cancelar" text="Cancelar" />
+      <TableView fx:id="tabla" fixedCellSize="-2.0" layoutX="57.0" layoutY="171.0" prefHeight="185.0" prefWidth="494.0">
+         <columns>
+            <TableColumn fx:id="ColumNombre" prefWidth="246.0" text="Nombre Evento" />
+            <TableColumn fx:id="ColumFecha" prefWidth="247.0" text="Fecha" />
+         </columns>
+      </TableView>
+      <ImageView fitHeight="88.0" fitWidth="80.0" layoutX="186.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Imagenes/EC.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="304.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="en" wrappingWidth="80.0">
+         <font>
+            <Font name="Yu Gothic Regular" size="36.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="276.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="contacto">
+         <font>
+            <Font name="Yu Gothic Regular" size="36.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
