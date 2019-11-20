@@ -113,6 +113,17 @@ public class FXMLEventosController implements Initializable {
 
     @FXML
     private void EditarEvento(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLEditarEvento.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        FXMLEditarEventoController controller = fxmlLoader.getController();
+        controller.setId(this.Id);
+        Stage stage = new Stage();
+        stage.setTitle("ENCONTACTO - EDITAR EVENTO");
+        stage.setScene(new Scene(root1));
+        stage.show();
+        Stage mainWindow;
+        mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        mainWindow.close();
     }
     
     private void actualizarNoticias() {
