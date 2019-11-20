@@ -67,6 +67,29 @@ public class FXMLAgregarEventoController implements Initializable {
 
     @FXML
     private void Guardar(ActionEvent event){
+        try {
+            if (!TextNombre.getText().isEmpty() && !TextContacto.getText().isEmpty()) {
+                recuperarUsuario();
+                Evento evento = new Evento(TextNombre.getText(), TextContacto.getText(), TextFecha.getText(), TextHora.getText(),
+                        TextLugar.getText(), TextDescripcion.getText(), rs.getString("Usuario"));
+                EventoDAOImplementacion eventoDAO = new EventoDAOImplementacion();
+                try {
+                    eventoDAO.create(evento);
+                    JOptionPane.showMessageDialog(null, "Evento publicado con exito");
+                    regresarVentana();
+                    Stage mainWindow;
+                    mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    mainWindow.close();
+                } catch (Exception e) {
+                    System.out.println("bt Guardar RUC");
+                    System.out.println("Error Evento NO Publicado");
+                }
+            } else {
+                System.out.println("Algun campo esta vacio");
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
     
     @FXML
@@ -85,10 +108,10 @@ public class FXMLAgregarEventoController implements Initializable {
     private void regresarVentana() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLEventos.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
-        FXMLNoticiasController controller = fxmlLoader.getController();
+        FXMLEventosController controller = fxmlLoader.getController();
         controller.setId(this.Id);
         Stage stage = new Stage();
-        stage.setTitle("ENCONTACTO - EVENTOSLuis");
+        stage.setTitle("ENCONTACTO - EVENTOS");
         stage.setScene(new Scene(root1));
         stage.show();
     }
