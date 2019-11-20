@@ -95,7 +95,7 @@ public class FXMLNoticiasController implements Initializable {
         FXMLEliminarNoticiaController controller = fxmlLoader.getController();
         controller.setId(this.Id);
         Stage stage = new Stage();
-        stage.setTitle("ENCONTACTO - EDITAR NOTICIA");
+        stage.setTitle("ENCONTACTO - ELIMINAR NOTICIA");
         stage.setScene(new Scene(root1));
         stage.show();
         Stage mainWindow;

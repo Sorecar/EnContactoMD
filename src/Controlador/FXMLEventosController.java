@@ -109,6 +109,17 @@ public class FXMLEventosController implements Initializable {
 
     @FXML
     private void EliminarEvento(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLEliminarEvento.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        FXMLEliminarEventoController controller = fxmlLoader.getController();
+        controller.setId(this.Id);
+        Stage stage = new Stage();
+        stage.setTitle("ENCONTACTO - ELIMINAR NOTICIA");
+        stage.setScene(new Scene(root1));
+        stage.show();
+        Stage mainWindow;
+        mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        mainWindow.close();
     }
 
     @FXML
