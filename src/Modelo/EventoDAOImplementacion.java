@@ -40,7 +40,25 @@ public class EventoDAOImplementacion implements EventoDAO {
 
     @Override
     public void update(Evento evento) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        String UPDATE = "UPDATE eventos SET Nombre=?, Contacto=?, Fecha=?, Hora=?, Lugar=?, Descripcion=? WHERE Id=?";
+        try {
+            ps = conexion.prepareStatement(UPDATE);
+
+            ps.setString(1, evento.getNombre() );
+            ps.setString(2, evento.getContacto());
+            ps.setString(3, evento.getFecha());
+            ps.setString(4, evento.getHora());
+            ps.setString(5, evento.getLugar());
+            ps.setString(6, evento.getDescripcion());
+            ps.setInt(7, evento.getId());
+
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+            System.out.println("Error desde aca");
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

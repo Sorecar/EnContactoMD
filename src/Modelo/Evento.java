@@ -9,6 +9,7 @@ public class Evento {
     private String Lugar;
     private String Descripcion;
     private String Usuario;
+    private int Id;
 
     public Evento(String Nombre, String Contacto, String Fecha, String Hora, String Lugar, String Descripcion, String Usuario) {
         this.Nombre = Nombre;
@@ -76,6 +77,12 @@ public class Evento {
         this.Usuario = Usuario;
     }
 
-    
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
+    }
     
 }
