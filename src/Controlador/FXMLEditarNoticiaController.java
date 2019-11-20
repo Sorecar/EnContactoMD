@@ -92,7 +92,7 @@ public class FXMLEditarNoticiaController implements Initializable {
     }
 
     private void regresarVentana() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLNoticias.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLEventos.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         FXMLNoticiasController controller = fxmlLoader.getController();
         controller.setId(this.Id);

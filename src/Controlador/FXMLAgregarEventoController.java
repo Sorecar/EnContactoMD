@@ -1,12 +1,18 @@
 package Controlador;
 
+import Modelo.BaseConexion;
 import Modelo.Evento;
 import Modelo.EventoDAOImplementacion;
 import Modelo.Noticia;
 import Modelo.NoticiaDAOImplementacion;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,51 +23,74 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 public class FXMLAgregarEventoController implements Initializable {
+    
+    private int Id;
 
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
+    }
+
+    BaseConexion conn = new BaseConexion();
+    Connection con = conn.getConexion();
+    Statement ps = null;
+    ResultSet rs = null;
+    
     @FXML
-    private TextArea EventoDes;
+    private TextArea TextLugar;
     @FXML
-    private TextField ConEvento;
+    private TextArea TextHora;
     @FXML
-    private TextField FechaE;
+    private TextArea TextNombre;
     @FXML
-    private TextField HoraE;
+    private TextArea TextFecha;
+    @FXML
+    private TextArea TextContacto;
+    @FXML
+    private TextArea TextDescripcion;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        Platform.runLater(() -> {
+
+        });
     }    
 
     @FXML
-    private void Guardar(ActionEvent event) {
-        String ConInfo = ConEvento.getText();
-        String FechaEvento = FechaE.getText();
-        String HoraEvento = HoraE.getText();
-        String Evento = EventoDes.getText();
-        if (!ConEvento.getText().isEmpty() || !FechaE.getText().isEmpty() || !HoraE.getText().isEmpty() || !EventoDes.getText().isEmpty()) {
-            Evento evento = new Evento(ConInfo, FechaEvento, HoraEvento, Evento);
+    private void Guardar(ActionEvent event){
+        try{
+            if (!TextNombre.getText().isEmpty() && !TextFecha.getText().isEmpty() && !TextHora.getText().isEmpty() && !TextContacto.getText().isEmpty() && !TextLugar.getText().isEmpty() && !TextDescripcion.getText().isEmpty()) {
+            recuperarUsuario();
+            Evento evento = new Evento(TextNombre.getText(), TextContacto.getText(), TextFecha.getText(), TextHora.getText(), TextLugar.getText(), TextDescripcion.getText(), rs.getString("Usuario"));
             EventoDAOImplementacion eventoDAO = new EventoDAOImplementacion();
             try {
                 eventoDAO.create(evento);
-                System.out.println("Evento publicado con exito");
+                JOptionPane.showMessageDialog(null, "Evento publicado con exito");
                 regresarVentana();
                 Stage mainWindow;
                 mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 mainWindow.close();
-            } catch (Exception e) {
+            }catch (Exception e) {
                 System.out.println("bt Guardar RUC");
                 System.out.println("Error Evento NO Publicado");
             }
-        } else {
-            System.out.println("Algun campo esta vacio");
+            }else{
+                System.out.println("Algun campo esta vacio");
+            }
+        }catch (SQLException e){
+            System.out.println(e);
         }
     }
-
+    
     @FXML
     private void Cancelar(ActionEvent event) {
         try {
@@ -78,10 +107,23 @@ public class FXMLAgregarEventoController implements Initializable {
     private void regresarVentana() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLEventos.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
+        FXMLNoticiasController controller = fxmlLoader.getController();
+        controller.setId(this.Id);
         Stage stage = new Stage();
-        stage.setTitle("ENCONTACTO - EVENTOS");
+        stage.setTitle("ENCONTACTO - EVENTOSLuis");
         stage.setScene(new Scene(root1));
         stage.show();
+    }
+    
+    public void recuperarUsuario() {
+        try {
+            String sql = "SELECT * FROM usuarios WHERE Id=" + this.Id;
+            ps = con.createStatement();
+            rs = ps.executeQuery(sql);
+            rs.next();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
     
 }
