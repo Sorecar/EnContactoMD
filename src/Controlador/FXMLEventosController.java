@@ -101,8 +101,5 @@ public class FXMLEventosController implements Initializable {
         mainWindow.close();
     }
 
-    @FXML
-    private void EditarEvento(MouseEvent event) {
-    }
 
 }
