@@ -85,7 +85,20 @@ public class FXMLEventosController implements Initializable {
     }
 
     @FXML
-    private void EliminarEvento(MouseEvent event) {
+    private void EliminarEvento(MouseEvent event) throws IOException {
+    }
+
+    @FXML
+    private void EditarEvento(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLEditarEvento.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("ENCONTACTO - AGREGAR EVENTO");
+        stage.setScene(new Scene(root1));
+        stage.show();
+        Stage mainWindow;
+        mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        mainWindow.close();
     }
 
     @FXML
