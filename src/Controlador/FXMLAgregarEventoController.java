@@ -67,28 +67,6 @@ public class FXMLAgregarEventoController implements Initializable {
 
     @FXML
     private void Guardar(ActionEvent event){
-        try{
-            if (!TextNombre.getText().isEmpty() && !TextFecha.getText().isEmpty() && !TextHora.getText().isEmpty() && !TextContacto.getText().isEmpty() && !TextLugar.getText().isEmpty() && !TextDescripcion.getText().isEmpty()) {
-            recuperarUsuario();
-            Evento evento = new Evento(TextNombre.getText(), TextContacto.getText(), TextFecha.getText(), TextHora.getText(), TextLugar.getText(), TextDescripcion.getText(), rs.getString("Usuario"));
-            EventoDAOImplementacion eventoDAO = new EventoDAOImplementacion();
-            try {
-                eventoDAO.create(evento);
-                JOptionPane.showMessageDialog(null, "Evento publicado con exito");
-                regresarVentana();
-                Stage mainWindow;
-                mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                mainWindow.close();
-            }catch (Exception e) {
-                System.out.println("bt Guardar RUC");
-                System.out.println("Error Evento NO Publicado");
-            }
-            }else{
-                System.out.println("Algun campo esta vacio");
-            }
-        }catch (SQLException e){
-            System.out.println(e);
-        }
     }
     
     @FXML
