@@ -172,7 +172,7 @@ public class FXMLNoticiasController implements Initializable {
 
                 Text fecha = new Text(rs.getString("Fecha"));
                 fecha.setLayoutX(480);
-                fecha.setLayoutY(125);
+                fecha.setLayoutY(125);                
                 p.getChildren().addAll(tn, post, fecha);
 
                 Separator sp = new Separator(Orientation.HORIZONTAL);

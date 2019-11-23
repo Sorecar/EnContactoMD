@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,6 +18,7 @@ import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Separator;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -166,11 +168,27 @@ public class FXMLEventosController implements Initializable {
                 post.setLayoutX(120);
                 post.setLayoutY(30);
                 post.setWrappingWidth(460);
+                
+                Button b = new Button("Ver Detalles");
+                b.setLayoutX(480);
+                b.setLayoutY(200);
+                b.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        try{
+                            System.out.println("Hola");
+                        }catch(Exception ex){
+                            System.out.println("error");
+                        } 
+                    }
+                });
 
                 Text fecha = new Text(rs.getString("Fecha"));
                 fecha.setLayoutX(480);
                 fecha.setLayoutY(125);
-                p.getChildren().addAll(tn, post, fecha);
+                p.getChildren().addAll(tn, post, fecha, b);
+                
+                
 
                 Separator sp = new Separator(Orientation.HORIZONTAL);
                 sp.setPrefSize(615, 10);
