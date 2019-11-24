@@ -99,9 +99,6 @@ public class FXMLAdmiController implements Initializable {
         this.ColumEstado.setCellValueFactory(new PropertyValueFactory<>("Estatus"));
         this.tablausuarios.setItems(data);
     }
-    
-    
-    
 
     @FXML
     private void CerrarSesion(MouseEvent event) {
@@ -119,7 +116,6 @@ public class FXMLAdmiController implements Initializable {
     private void regresarVentana() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLLogin.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
-        
         Stage stage = new Stage();
         stage.setTitle("ENCONTACTO - INICIO DE SESION");
         stage.setScene(new Scene(root1));

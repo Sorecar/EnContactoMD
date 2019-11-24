@@ -53,7 +53,7 @@ public class FXMLEventosController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         Platform.runLater(()->{
-            actualizarNoticias();
+            actualizarEvento();
         });
     }
 
@@ -116,7 +116,7 @@ public class FXMLEventosController implements Initializable {
         FXMLEliminarEventoController controller = fxmlLoader.getController();
         controller.setId(this.Id);
         Stage stage = new Stage();
-        stage.setTitle("ENCONTACTO - ELIMINAR NOTICIA");
+        stage.setTitle("ENCONTACTO - ELIMINAR EVENTO");
         stage.setScene(new Scene(root1));
         stage.show();
         Stage mainWindow;
@@ -139,7 +139,7 @@ public class FXMLEventosController implements Initializable {
         mainWindow.close();
     }
     
-    private void actualizarNoticias() {
+    private void actualizarEvento() {
         String sql = "SELECT * FROM eventos ORDER BY Fecha DESC";
         try {
             ps = con.createStatement();
@@ -169,27 +169,11 @@ public class FXMLEventosController implements Initializable {
                 post.setLayoutY(30);
                 post.setWrappingWidth(460);
                 
-                Button b = new Button("Ver Detalles");
-                b.setLayoutX(480);
-                b.setLayoutY(200);
-                b.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        try{
-                            System.out.println("Hola");
-                        }catch(Exception ex){
-                            System.out.println("error");
-                        } 
-                    }
-                });
-
                 Text fecha = new Text(rs.getString("Fecha"));
                 fecha.setLayoutX(480);
                 fecha.setLayoutY(125);
-                p.getChildren().addAll(tn, post, fecha, b);
+                p.getChildren().addAll(tn, post, fecha);
                 
-                
-
                 Separator sp = new Separator(Orientation.HORIZONTAL);
                 sp.setPrefSize(615, 10);
                 sp.setLayoutY(medida + 150);
@@ -200,6 +184,21 @@ public class FXMLEventosController implements Initializable {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
+    }
+
+    @FXML
+    private void VerDetalles(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLDetalles.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        FXMLDetallesController controller = fxmlLoader.getController();
+        controller.setId(this.Id);
+        Stage stage = new Stage();
+        stage.setTitle("ENCONTACTO - EVENTOS");
+        stage.setScene(new Scene(root1));
+        stage.show();
+        Stage mainWindow;
+        mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        mainWindow.close();
     }
 
 
