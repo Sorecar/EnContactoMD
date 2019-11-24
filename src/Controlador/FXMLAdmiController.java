@@ -170,5 +170,18 @@ public class FXMLAdmiController implements Initializable {
         this.BtnEditar.setDisable(false);
         this.BtnGuardar.setDisable(true);
     }
+
+    @FXML
+    private void AgregarAdmin(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLAgregarAdmin.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("ENCONTACTO - AGREGAR ADMINISTRADOR");
+        stage.setScene(new Scene(root1));
+        stage.show();
+        Stage mainWindow;
+        mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        mainWindow.close();
+    }
     
 }
