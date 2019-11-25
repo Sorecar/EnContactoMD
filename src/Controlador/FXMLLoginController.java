@@ -45,7 +45,7 @@ public class FXMLLoginController implements Initializable {
 
     @FXML
     private void Ingresar(ActionEvent eventI) {
-        if (!tfUsuario.getText().isEmpty() || !pfPass.getText().isEmpty()) {
+        if (!tfUsuario.getText().isEmpty() && !pfPass.getText().isEmpty()) {
             validar(tfUsuario.getText(), pfPass.getText()); //Aqui se realiza la consulta si es usuario o admin
             if (idUsuario != 0 || tipoUsuario != "") {
                 if (tipoUsuario == "Usuario") {
@@ -89,8 +89,10 @@ public class FXMLLoginController implements Initializable {
                     JOptionPane.showMessageDialog(null, "Usuario no encontrado");
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Por favor llene todos los campos");
+                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta");
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor llene todos los campos");
         }
     }
 
