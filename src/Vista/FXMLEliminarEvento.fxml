@@ -14,7 +14,7 @@
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1c4c7" height="400.0" layoutX="-4.0" layoutY="14.0" stroke="#ffffff00" strokeType="INSIDE" width="607.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3d4b57" height="153.0" layoutX="-4.0" layoutY="-1.0" stroke="TRANSPARENT" strokeType="INSIDE" width="607.0" />
-      <Text fill="WHITE" layoutX="211.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ELIMINAR NOTICIA">
+      <Text fill="WHITE" layoutX="211.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ELIMINAR EVENTO">
          <font>
             <Font name="Yu Gothic Regular" size="20.0" />
          </font>
