@@ -61,5 +61,6 @@
             <Font name="Yu Gothic Regular" size="36.0" />
          </font>
       </Text>
+      <Button layoutX="449.0" layoutY="362.0" mnemonicParsing="false" onAction="#Eliminar" text="Eliminar" />
    </children>
 </AnchorPane>

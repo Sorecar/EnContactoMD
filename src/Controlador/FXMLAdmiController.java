@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.BaseConexion;
+import Modelo.UsuarioDAOImplementacion;
 import Modelo.Usuario;
 import java.io.IOException;
 import java.net.URL;
@@ -28,6 +29,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 public class FXMLAdmiController implements Initializable {
     private int Id;
@@ -182,6 +184,29 @@ public class FXMLAdmiController implements Initializable {
         Stage mainWindow;
         mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
         mainWindow.close();
+    }
+
+    @FXML
+    private void Eliminar(ActionEvent event) {
+        if (tablausuarios.getSelectionModel().getSelectedItem() != null) {
+            try {
+                //Aqui es cuando lo borra
+                int res = JOptionPane.showConfirmDialog(null, "Estas seguro de eliminar este usuario");
+                if(JOptionPane.OK_OPTION == res){
+                    UsuarioDAOImplementacion usuarioDAO = new UsuarioDAOImplementacion();
+                    usuarioDAO.remove(tablausuarios.getSelectionModel().getSelectedItem().getUsuario());
+                    JOptionPane.showMessageDialog(null, "Usuario eliminado exitosamente");
+                    //Esto es de para cerra la ventana, codigo extra
+                    DatosTabla();
+                }else{
+                    
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una publicacion");
+        }
     }
     
 }

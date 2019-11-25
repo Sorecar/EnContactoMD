@@ -59,8 +59,21 @@ public class UsuarioDAOImplementacion implements UsuarioDAO {
     }
 
     @Override
-    public boolean remove(int usuario) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean remove(String usuario) {
+        boolean bandera = false;
+        String DELETE = "DELETE FROM usuarios WHERE Usuario=?";
+        try {
+            ps = conexion.prepareStatement(DELETE);
+            ps.setString(1, usuario);
+
+            ps.executeUpdate();
+            ps.close();
+            bandera = true;
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            return bandera;
+        }
     }
 
     @Override
