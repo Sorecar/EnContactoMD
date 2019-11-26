@@ -9,8 +9,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,7 +19,7 @@ import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Separator;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -31,8 +32,10 @@ public class FXMLEventosController implements Initializable {
 
     @FXML
     private AnchorPane PaneP;
-
+    
     private int Id;
+    @FXML
+    private ComboBox<String> combo;
 
     public int getId() {
         return Id;
@@ -43,7 +46,7 @@ public class FXMLEventosController implements Initializable {
     }
     
     private int medida = 0;
-
+    String sql = "SELECT * FROM eventos ORDER BY Fecha DESC";
     BaseConexion conn = new BaseConexion();
     Connection con = conn.getConexion();
     Statement ps = null;
@@ -53,6 +56,8 @@ public class FXMLEventosController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         Platform.runLater(()->{
+            ObservableList<String> opciones = FXCollections.observableArrayList("Todos", "Proxima hora", "Proximas 24 horas", "Proximos 7 dias");
+            combo.getItems().addAll(opciones);
             actualizarEvento();
         });
     }
@@ -140,7 +145,8 @@ public class FXMLEventosController implements Initializable {
     }
     
     private void actualizarEvento() {
-        String sql = "SELECT * FROM eventos ORDER BY Fecha DESC";
+        PaneP.getChildren().clear();
+        medida = 0;
         try {
             ps = con.createStatement();
             rs = ps.executeQuery(sql);
@@ -199,6 +205,24 @@ public class FXMLEventosController implements Initializable {
         Stage mainWindow;
         mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
         mainWindow.close();
+    }
+
+    @FXML
+    private void Filtro(ActionEvent event) {
+        String copcion = combo.getSelectionModel().getSelectedItem();
+        PaneP.getChildren().clear();
+        PaneP.setPrefSize(0, 0);
+        PaneP.autosize();
+        if (copcion == "Todos") {
+            sql = "SELECT * FROM eventos ORDER BY Fecha DESC";
+        } else if (copcion == "Proxima hora") {
+            sql = "SELECT * FROM eventos WHERE Fecha between now() AND DATE_SUB(CONCAT(CURDATE(), ' ',CURTIME()), INTERVAL -1 hour) ORDER BY Fecha DESC;";
+        } else if (copcion == "Proximas 24 horas") {
+            sql = "SELECT * FROM eventos WHERE Fecha between now() AND DATE_SUB(CONCAT(CURDATE(), ' ',CURTIME()), INTERVAL -1 day) ORDER BY Fecha DESC;";
+        } else if (copcion == "Proximos 7 dias") {
+            sql = "SELECT * FROM eventos WHERE Fecha between now() AND DATE_SUB(CONCAT(CURDATE(), ' ',CURTIME()), INTERVAL -7 day) ORDER BY Fecha DESC;";
+        }
+        actualizarEvento();
     }
 
 
