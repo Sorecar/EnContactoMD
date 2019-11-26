@@ -46,7 +46,7 @@
          </font>
       </Hyperlink>
       <Button layoutX="646.0" layoutY="446.0" mnemonicParsing="false" onAction="#Inicio" prefHeight="25.0" prefWidth="75.0" text="Inicio" />
-      <ScrollPane fx:id="ScrollPane" layoutX="133.0" layoutY="100.0" prefHeight="322.0" prefWidth="617.0">
+      <ScrollPane layoutX="133.0" layoutY="100.0" prefHeight="322.0" prefWidth="617.0">
          <content>
             <AnchorPane fx:id="principal" prefHeight="0.0" prefWidth="615.0" />
          </content>

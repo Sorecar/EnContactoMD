@@ -44,8 +44,6 @@ public class FXMLNoticiasController implements Initializable {
     private int Id;
     @FXML
     private ComboBox<String> combo;
-    @FXML
-    private ScrollPane ScrollPane;
 
     public int getId() {
         return Id;
