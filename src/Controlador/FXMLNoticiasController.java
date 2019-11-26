@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +19,8 @@ import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -28,7 +32,7 @@ import javafx.stage.Stage;
 public class FXMLNoticiasController implements Initializable {
 
     private int medida = 0;
-
+    String sql = "SELECT * FROM noticia ORDER BY Fecha DESC";
     BaseConexion conn = new BaseConexion();
     Connection con = conn.getConexion();
     Statement ps = null;
@@ -38,6 +42,10 @@ public class FXMLNoticiasController implements Initializable {
     private AnchorPane principal;
 
     private int Id;
+    @FXML
+    private ComboBox<String> combo;
+    @FXML
+    private ScrollPane ScrollPane;
 
     public int getId() {
         return Id;
@@ -53,8 +61,11 @@ public class FXMLNoticiasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        Platform.runLater(()->{
+        Platform.runLater(() -> {
+            ObservableList<String> opciones = FXCollections.observableArrayList("Todos", "Ultima hora", "Ultimas 24 horas", "Ultimos 7 dias");
+            combo.getItems().addAll(opciones);
             actualizarNoticias();
+
         });
     }
 
@@ -130,7 +141,7 @@ public class FXMLNoticiasController implements Initializable {
         mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
         mainWindow.close();
     }
-    
+
     private void regresarVentana() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLLogin.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
@@ -141,7 +152,8 @@ public class FXMLNoticiasController implements Initializable {
     }
 
     private void actualizarNoticias() {
-        String sql = "SELECT * FROM noticia ORDER BY Fecha DESC";
+        principal.getChildren().clear();
+        medida = 0;
         try {
             ps = con.createStatement();
             rs = ps.executeQuery(sql);
@@ -172,7 +184,7 @@ public class FXMLNoticiasController implements Initializable {
 
                 Text fecha = new Text(rs.getString("Fecha"));
                 fecha.setLayoutX(480);
-                fecha.setLayoutY(125);                
+                fecha.setLayoutY(125);
                 p.getChildren().addAll(tn, post, fecha);
 
                 Separator sp = new Separator(Orientation.HORIZONTAL);
@@ -187,4 +199,21 @@ public class FXMLNoticiasController implements Initializable {
         }
     }
 
+    @FXML
+    private void RecFiltro(ActionEvent event) {
+        String copcion = combo.getSelectionModel().getSelectedItem();
+        principal.getChildren().clear();
+        principal.setPrefSize(0, 0);
+        principal.autosize();
+        if (copcion == "Todos") {
+            sql = "SELECT * FROM noticia ORDER BY Fecha DESC";
+        } else if (copcion == "Ultima hora") {
+            sql = "SELECT * FROM noticia WHERE Fecha between DATE_SUB(CONCAT(CURDATE(), ' ',CURTIME()), INTERVAL 1 HOUR) AND now() ORDER BY Fecha DESC;";
+        } else if (copcion == "Ultimas 24 horas") {
+            sql = "SELECT * FROM noticia WHERE Fecha between DATE_SUB(CONCAT(CURDATE(), ' ',CURTIME()), INTERVAL 1 DAY) AND now() ORDER BY Fecha DESC;";
+        } else if (copcion == "Ultimos 7 dias") {
+            sql = "SELECT * FROM noticia WHERE Fecha between DATE_SUB(CONCAT(CURDATE(), ' ',CURTIME()), INTERVAL 7 DAY) AND now() ORDER BY Fecha DESC;";
+        }
+        actualizarNoticias();
+    }
 }
