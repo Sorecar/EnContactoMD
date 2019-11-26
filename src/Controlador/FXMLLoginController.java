@@ -32,7 +32,7 @@ public class FXMLLoginController implements Initializable {
     ResultSet rs = null;
 
     int idUsuario = 0;
-    String estatus;
+    String estatus = "";
     String tipoUsuario = "";
 
     /**
@@ -85,11 +85,9 @@ public class FXMLLoginController implements Initializable {
                         System.out.println(i);
 
                     }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Usuario no encontrado");
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta");
+                JOptionPane.showMessageDialog(null, "Usuario y/o contraseña incorrecta");
             }
         } else {
             JOptionPane.showMessageDialog(null, "Por favor llene todos los campos");
@@ -97,8 +95,7 @@ public class FXMLLoginController implements Initializable {
     }
 
     @FXML
-    private void Registrarse(ActionEvent event
-    ) {
+    private void Registrarse(ActionEvent event) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vista/FXMLRegistrarse.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
@@ -138,6 +135,9 @@ public class FXMLLoginController implements Initializable {
     private void validar(String usuario, String contraseña) {
         //Checamos si es usuario
         try {
+            idUsuario = 0;
+            estatus = "";
+            tipoUsuario = "";
             String sql = "SELECT * FROM usuarios WHERE Usuario='" + usuario + "' && Contraseña='" + contraseña + "'";
             ps = con.createStatement();
             rs = ps.executeQuery(sql);
