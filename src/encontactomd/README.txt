@@ -15,7 +15,7 @@ Metodologias de Desarrollo
 Informacion:
 
 Para hacer uso del sistema es necesario utilizar el gestor de base de datos MySQL
-los scrips de la base de datsos utilizadas se encuentran en un documento
+los scrips de la base de datos utilizadas se encuentran en un documento
 con el formato para importarlos en el programa directamente, tambien se agrega un
 bloc de notas con los codigos de la base de datos.
 

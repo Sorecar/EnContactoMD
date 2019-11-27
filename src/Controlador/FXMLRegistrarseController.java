@@ -42,12 +42,13 @@ public class FXMLRegistrarseController implements Initializable {
         String contraseña = tfContraseña.getText();
         String telefono = tfTelefono.getText();
         String mascota = tfMascota.getText();
-        if (!tfNombre.getText().isEmpty() || !tfContraseña.getText().isEmpty() || !tfTelefono.getText().isEmpty() || !tfMascota.getText().isEmpty()) {
+        if (!tfNombre.getText().isEmpty() && !tfContraseña.getText().isEmpty() && !tfTelefono.getText().isEmpty() && !tfMascota.getText().isEmpty()) {
             Usuario usuario = new Usuario(nombre, contraseña, telefono, mascota);
             UsuarioDAOImplementacion usuarioDAO = new UsuarioDAOImplementacion();
             try {
                 usuarioDAO.create(usuario);
                 System.out.println("Usuario registrado con exito");
+                JOptionPane.showMessageDialog(null, "Usuario Registrado con exito");
                 regresarVentana();
                 Stage mainWindow;
                 mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();

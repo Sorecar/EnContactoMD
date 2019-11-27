@@ -71,6 +71,7 @@ public class FXMLEditarNoticiaController implements Initializable {
                 }
             } else {
                 System.out.println("No puede dejar la noticia vacia");
+                JOptionPane.showMessageDialog(null, "No puede dejar la noticia vacia");
             }
         } catch (SQLException e) {
             System.out.println(e);
