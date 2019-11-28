@@ -93,6 +93,7 @@ public class FXMLEditarEventoController implements Initializable {
                     System.out.println("Error Evento NO Editado");
                 }
             } else {
+                JOptionPane.showMessageDialog(null, "Por favor llene todos los campos que se solicitan");
                 System.out.println("No puede dejar el evento vacio");
             }
         } catch (SQLException e) {
