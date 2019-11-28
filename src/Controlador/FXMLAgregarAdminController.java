@@ -91,7 +91,7 @@ public class FXMLAgregarAdminController implements Initializable {
             AdminDAOImplementacion adminDAO = new AdminDAOImplementacion();
             try {
                 adminDAO.create(admin);
-                System.out.println("Administrador registrado con exito");
+                JOptionPane.showMessageDialog(null, "Administrador registrado exitosamente");
                 Principal();
                 Stage mainWindow;
                 mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
