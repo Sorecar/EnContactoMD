@@ -43,7 +43,7 @@ public class FXMLRecuperarContraController implements Initializable {
 
     @FXML
     private void BtEnviarContra(ActionEvent event) {
-        if (!TfUsuario.getText().isEmpty() ||  !TfTelefono.getText().isEmpty() || !TfMascota.getText().isEmpty()) {
+        if (!TfUsuario.getText().isEmpty() &&  !TfTelefono.getText().isEmpty() && !TfMascota.getText().isEmpty()) {
             validar(TfUsuario.getText(), TfTelefono.getText() ,TfMascota.getText());
         } else {
             JOptionPane.showMessageDialog(null, "Por favor llene todos los campos");

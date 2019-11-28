@@ -86,7 +86,7 @@ public class FXMLAgregarAdminController implements Initializable {
     private void Guardar(ActionEvent event) {
         String nombre = TextAdmin.getText();
         String contraseña = TextContra.getText();
-        if (!TextAdmin.getText().isEmpty() || !TextContra.getText().isEmpty()) {
+        if (!TextAdmin.getText().isEmpty() && !TextContra.getText().isEmpty()) {
             Admin admin = new Admin(nombre, contraseña);
             AdminDAOImplementacion adminDAO = new AdminDAOImplementacion();
             try {

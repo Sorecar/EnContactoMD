@@ -68,6 +68,7 @@ public class FXMLAgregarNoticiaController implements Initializable {
                 }
             } else {
                 System.out.println("Algun campo esta vacio");
+                JOptionPane.showMessageDialog(null, "Por favor llene todos los campos");
             }
         } catch (SQLException e) {
             System.out.println(e);

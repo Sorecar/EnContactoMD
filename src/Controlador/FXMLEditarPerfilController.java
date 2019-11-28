@@ -58,7 +58,7 @@ public class FXMLEditarPerfilController implements Initializable {
 
     @FXML
     private void Guardar(ActionEvent event) {
-        if (!tfNombre.getText().isEmpty() || !tfContraseña.getText().isEmpty() || !tfTelefono.getText().isEmpty() || !tfMascota.getText().isEmpty()) {
+        if (!tfNombre.getText().isEmpty() && !tfContraseña.getText().isEmpty() && !tfTelefono.getText().isEmpty() && !tfMascota.getText().isEmpty()) {
             Usuario usuario = new Usuario(tfNombre.getText(), tfContraseña.getText(), tfTelefono.getText(), tfMascota.getText());
             usuario.setId(Id);
             UsuarioDAOImplementacion usuarioDAO = new UsuarioDAOImplementacion();
