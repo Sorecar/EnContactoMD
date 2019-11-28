@@ -64,7 +64,7 @@ public class FXMLEditarPerfilController implements Initializable {
             UsuarioDAOImplementacion usuarioDAO = new UsuarioDAOImplementacion();
             try {
                 usuarioDAO.update(usuario);
-                System.out.println("Cambios del usuario guardados con exito");
+                JOptionPane.showMessageDialog(null, "Se actualizaron los datos");
                 regresarVentana();
                 Stage mainWindow;
                 mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();

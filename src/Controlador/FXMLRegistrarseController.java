@@ -47,7 +47,6 @@ public class FXMLRegistrarseController implements Initializable {
             UsuarioDAOImplementacion usuarioDAO = new UsuarioDAOImplementacion();
             try {
                 usuarioDAO.create(usuario);
-                System.out.println("Usuario registrado con exito");
                 JOptionPane.showMessageDialog(null, "Usuario Registrado con exito");
                 regresarVentana();
                 Stage mainWindow;
